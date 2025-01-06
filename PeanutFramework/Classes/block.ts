@@ -313,5 +313,6 @@ export class Block {
       )}.json`,
       JSON.stringify(this.data, null, 2)
     );
+    console.log("Compilation successful: block, " + this.identifier);
   }
 }
