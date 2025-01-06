@@ -1,0 +1,81 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "palm:peanut"
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          6,
+          12,
+          6
+        ]
+      },
+      "minecraft:custom_components": [
+        "peanut:gravity"
+      ],
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 1
+      },
+      "minecraft:item_visual": {
+        "geometry": "geo.peanut",
+        "material_instances": {
+          "*": {
+            "texture": "peanut",
+            "ambient_occlusion": false,
+            "render_method": "opaque"
+          }
+        }
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "can_contain_liquid": true,
+            "liquid_type": "water",
+            "on_liquid_touches": "no_reaction"
+          }
+        ]
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "north",
+              "south"
+            ],
+            "block_filter": [
+              {
+                "name": "palm:peanut2",
+                "states": {
+                  "growth": 1,
+                  "is_peanut": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tag:acacia": {},
+      "tag:diamond_pick_diggable": {},
+      "tag:peanut:extra_creamy": {},
+      "minecraft:transformation": {
+        "rotation": [
+          90,
+          0,
+          0
+        ],
+        "scale": [
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  }
+}

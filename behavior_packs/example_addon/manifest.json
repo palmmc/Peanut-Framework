@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "metadata": {
+    "generated_with": {
+      "peanut_framework": [
+        "0.0.1-ALPHA"
+      ]
+    },
+    "authors": [
+      "palm1"
+    ]
+  },
+  "header": {
+    "description": "Example pack (Behaviors)",
+    "min_engine_version": [
+      1,
+      21,
+      50
+    ],
+    "name": "Peanut Example",
+    "uuid": "86c2f37c-ec28-46ea-8e17-438b25b1c2d2",
+    "version": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "Data Module",
+      "type": "data",
+      "uuid": "4f4c57c9-43b7-4cff-ab38-8ef0af1206fb",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

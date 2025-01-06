@@ -1,0 +1,17 @@
+{
+  "name": "peanut-framework",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "del": "^6.0.0",
+    "fs": "^0.0.1-security",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5"
+  }
+}
