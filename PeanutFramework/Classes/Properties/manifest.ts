@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { v4 as uuid } from "uuid";
-import { API_VERSION, MIN_ENGINE_VERSION, MODULE_VERSION } from "../version";
+import { API_VERSION, MIN_ENGINE_VERSION, MODULE_VERSION } from "../../version";
 
 function mergePreserveUuids(mn1: any, mn2: any) {
   for (const key in mn2) {
@@ -46,7 +46,7 @@ export class Manifest {
       },
     },
   };
-  constructor(options: {
+  constructor(options?: {
     header?: {
       description?: string;
       min_engine_version?: number[];
@@ -78,12 +78,12 @@ export class Manifest {
     // Data Manifest
     this.data.header = {
       description:
-        (options.header?.description ?? "Example pack") + " (Behaviors)",
+        (options?.header?.description ?? "Example pack") + " (Behaviors)",
       min_engine_version:
-        options.header?.min_engine_version ?? MIN_ENGINE_VERSION,
-      name: options.header?.name ?? "Peanut Example",
-      uuid: options.header?.uuid ?? uuid(),
-      version: options.header?.version ?? [1, 0, 0],
+        options?.header?.min_engine_version ?? MIN_ENGINE_VERSION,
+      name: options?.header?.name ?? "Peanut Example",
+      uuid: options?.header?.uuid ?? uuid(),
+      version: options?.header?.version ?? [1, 0, 0],
     };
     this.data.modules = [
       {
@@ -93,17 +93,17 @@ export class Manifest {
         version: [1, 0, 0],
       },
     ];
-    if (options.modules?.scripts)
+    if (options?.modules?.scripts)
       this.data.modules.push({
         description: "Scripts Module",
         type: "script",
         uuid: uuid(),
         version: [0, 0, 1],
-        entry: options.modules?.scripts.entry ?? "scripts/main.js",
+        entry: options?.modules?.scripts.entry ?? "scripts/main.js",
       });
-    if (options.dependencies) {
+    if (options?.dependencies) {
       this.data.dependencies = [];
-      for (let dependency of Object.entries(options.dependencies)) {
+      for (let dependency of Object.entries(options?.dependencies)) {
         let version =
           MODULE_VERSION[dependency[0] as keyof typeof MODULE_VERSION];
         let v =
@@ -117,18 +117,18 @@ export class Manifest {
           });
       }
     }
-    this.data.metadata.authors = options.metadata?.authors;
-    this.data.metadata.license = options.metadata?.license;
+    this.data.metadata.authors = options?.metadata?.authors;
+    this.data.metadata.license = options?.metadata?.license;
     this.data.metadata.url = options?.metadata.url;
     // Resource Manifest
     this.resources.header = {
       description:
-        (options.header?.description ?? "Example pack") + " (Resources)",
+        (options?.header?.description ?? "Example pack") + " (Resources)",
       min_engine_version:
-        options.header?.min_engine_version ?? MIN_ENGINE_VERSION,
-      name: options.header?.name ?? "Peanut Example",
-      uuid: options.header?.uuid ?? uuid(),
-      version: options.header?.version ?? [1, 0, 0],
+        options?.header?.min_engine_version ?? MIN_ENGINE_VERSION,
+      name: options?.header?.name ?? "Peanut Example",
+      uuid: options?.header?.uuid ?? uuid(),
+      version: options?.header?.version ?? [1, 0, 0],
     };
     this.resources.modules = [
       {
@@ -138,8 +138,8 @@ export class Manifest {
         version: [1, 0, 0],
       },
     ];
-    this.resources.metadata.authors = options.metadata?.authors;
-    this.resources.metadata.license = options.metadata?.license;
+    this.resources.metadata.authors = options?.metadata?.authors;
+    this.resources.metadata.license = options?.metadata?.license;
     this.resources.metadata.url = options?.metadata.url;
   }
   /**

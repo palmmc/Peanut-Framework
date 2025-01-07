@@ -7,5 +7,13 @@
  * ```
  */
 export class TerrainMap {
-  constructor(id: string) {}
+  private data: any = {
+    texture_name: "atlas.terrain",
+    padding: 8,
+    num_mip_levels: 4,
+    texture_data: {},
+  };
+  constructor(id: string) {
+    this.data["resource_pack_name"] = id;
+  }
 }

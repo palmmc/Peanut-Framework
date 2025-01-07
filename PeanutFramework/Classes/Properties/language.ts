@@ -1,5 +1,6 @@
 import translate from "translate";
 import * as fs from "fs";
+import { Console } from "../../Utilities/utils";
 
 type LanguageKey =
   | "id_ID"
@@ -41,7 +42,7 @@ type LanguageKey =
  * ```
  */
 export class Language {
-  private options: { blacklistLanguages?: LanguageKey[] };
+  private automaticTranslation: boolean = false;
   private translations: Map<string, Map<string, string>> = new Map([
     ["id_ID", new Map([])],
     ["da_DK", new Map([])],
@@ -73,8 +74,30 @@ export class Language {
     ["zh_TW", new Map([])],
     ["ko_KR", new Map([])],
   ]);
-  constructor(options?: { blacklistLanguages?: LanguageKey[] }) {
-    this.options = options ?? {};
+  constructor() {}
+  public autoTranslate(options?: {
+    whitelistAsBlacklist?: boolean;
+    whitelistLanguages?: LanguageKey[];
+  }) {
+    this.automaticTranslation = true;
+    if (options) {
+      // Blacklist languages
+      if (options.whitelistAsBlacklist)
+        for (let lang of options.whitelistLanguages) {
+          if (lang === "en_US") continue;
+          this.translations.delete(lang);
+        }
+      // Whitelist languages
+      else {
+        const translations: Map<string, Map<string, string>> = new Map([
+          ["en_US", new Map([])],
+        ]);
+        for (let lang of options.whitelistLanguages)
+          translations.set(lang, new Map([]));
+        this.translations = translations;
+      }
+    }
+    return this;
   }
   public async translate(
     ...translations: {
@@ -87,29 +110,40 @@ export class Language {
       }[];
     }[]
   ) {
-    // Blacklist languages
-    if (this.options.blacklistLanguages)
-      for (let lang of this.options.blacklistLanguages) {
-        this.translations.delete(lang);
-      }
     // Store translations
     for (let t of translations) {
-      this.translations.get(t.source ?? "en_US").set(t.key, t.text);
-      if (t.overrideTranslations)
-        for (let o of t.overrideTranslations) {
-          this.translations.get(o.source).set(t.key, o.text);
-        }
-      for (let target of this.translations.keys()) {
-        if (!this.translations.get(target).get(t.key)) {
-          const translation = await this.feed(
-            t.text,
-            target.slice(0, target.indexOf("_"))
-          );
-          this.translations.get(target).set(t.key, translation as any);
+      try {
+        this.translations.get(t.source ?? "en_US").set(t.key, t.text);
+        if (t.overrideTranslations)
+          for (let o of t.overrideTranslations) {
+            try {
+              this.translations.get(o.source).set(t.key, o.text);
+            } catch (e) {
+              Console.log(
+                `Missing language map '${o.source}'. Make sure you are not blacklisting a language that is currently in use.`
+              );
+            }
+          }
+      } catch (e) {
+        Console.log(
+          `Missing language map '${t.source}'. Make sure you are not blacklisting a language that is currently in use.`
+        );
+      }
+      // Automatic translation
+      if (this.automaticTranslation === true) {
+        for (let target of this.translations.keys()) {
+          if (!this.translations.get(target).get(t.key)) {
+            const translation = await this.feed(
+              t.text,
+              target.slice(0, target.indexOf("_"))
+            );
+            this.translations.get(target).set(t.key, translation as any);
+          }
         }
       }
     }
     // Compile
+    let lines = 0;
     for (let key of this.translations.keys()) {
       let data = "";
       const directoryPath = "./resource_packs/example_addon/texts";
@@ -118,17 +152,22 @@ export class Language {
       }
       for (let t of this.translations.get(key).entries()) {
         data += `${t[0]}=${t[1]}\n`;
+        lines++;
       }
-      fs.writeFileSync(
-        `./resource_packs/example_addon/texts/${key}.lang`,
-        data
-      );
+      if (data.length > 0) {
+        fs.writeFileSync(
+          `./resource_packs/example_addon/texts/${key}.lang`,
+          data
+        );
+      }
     }
-    console.log(`Compilation successful: lang ( - ${this.translations.size})`);
+    Console.log(
+      `§5Compilation §asuccessful§r: §2texts§r, [${this.translations.size} languages, ${lines} lines]`
+    );
   }
   private async feed(text: string, target: string) {
     return await translate(text, target).catch((e) => {
-      console.log("Unsupported language: " + e);
+      Console.log("Unsupported language: " + e);
     });
   }
 }

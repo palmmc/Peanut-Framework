@@ -1,15 +1,16 @@
 import * as fs from "fs";
 import {
-  BlockDescriptor,
-  BlockSideKey,
-  Geometry,
-  ItemDescriptor,
-  MaterialInstances,
-  toJSON,
-  VanillaBlockTag,
   Vector,
-} from "../common";
-import { FORMAT_VERSION } from "../version";
+  ItemDescriptor,
+  Geometry,
+  MaterialInstances,
+  BlockSideKey,
+  BlockDescriptor,
+  VanillaBlockTag,
+} from "../../Types/types";
+import { Console, toJSON } from "../../Utilities/utils";
+import { FORMAT_VERSION } from "../../version";
+import { Feature } from "../classes";
 
 /**
  * Block class used for creating custom blocks.
@@ -23,12 +24,11 @@ export class Block {
   private data: any = { format_version: FORMAT_VERSION.BLOCK };
   private components: any = {};
   private identifier: string;
-  private displayName: string;
   constructor(identifier: string, displayName?: string) {
     this.identifier = identifier;
     this.data["minecraft:block"] = {
       description: { identifier: this.identifier },
-      components: { "minecraft:display_name": this.displayName },
+      components: { "minecraft:display_name": displayName },
     };
   }
   /**
@@ -302,17 +302,23 @@ export class Block {
    * Compiles a finished block class to JSON. Use after all other methods on this instance to generate it.
    */
   public compile() {
-    this.data["minecraft:block"]["components"] = this.components;
-    const directoryPath = "./behavior_packs/example_addon/blocks";
-    if (!fs.existsSync(directoryPath)) {
-      fs.mkdirSync(directoryPath, { recursive: true });
+    try {
+      this.data["minecraft:block"]["components"] = this.components;
+      const directoryPath = "./behavior_packs/example_addon/blocks";
+      if (!fs.existsSync(directoryPath)) {
+        fs.mkdirSync(directoryPath, { recursive: true });
+      }
+      fs.writeFileSync(
+        `./behavior_packs/example_addon/blocks/${this.identifier.substring(
+          this.identifier.indexOf(":") + 1
+        )}.json`,
+        JSON.stringify(this.data, null, 2)
+      );
+      Console.log(
+        `§5Compilation §asuccessful§r: §bblock§r, [${this.identifier}]`
+      );
+    } catch (e) {
+      Console.log(`§5Compilation §cfailed§r: §bblock§r, [${this.identifier}]`);
     }
-    fs.writeFileSync(
-      `./behavior_packs/example_addon/blocks/${this.identifier.substring(
-        this.identifier.indexOf(":") + 1
-      )}.json`,
-      JSON.stringify(this.data, null, 2)
-    );
-    console.log("Compilation successful: block, " + this.identifier);
   }
 }
