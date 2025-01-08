@@ -1,37 +1,7 @@
 import translate from "translate";
 import * as fs from "fs";
-import { Console } from "../../Utilities/utils";
-
-type LanguageKey =
-  | "id_ID"
-  | "da_DK"
-  | "de_DE"
-  | "en_GB"
-  | "en_US"
-  | "es_ES"
-  | "es_MX"
-  | "fr_CA"
-  | "fr_FR"
-  | "it_IT"
-  | "hu_HU"
-  | "nl_NL"
-  | "nb_NO"
-  | "pl_PL"
-  | "pt_BR"
-  | "pt_PT"
-  | "sk_SK"
-  | "fi_FI"
-  | "sv_SE"
-  | "tr_TR"
-  | "cs_CZ"
-  | "el_GR"
-  | "bg_BG"
-  | "ru_RU"
-  | "uk_UA"
-  | "ja_JP"
-  | "zh_CN"
-  | "zh_TW"
-  | "ko_KR";
+import { Benchmark, Console, defaultLanguages } from "../../Utilities/utils";
+import { LanguageKey } from "../../Types/types";
 
 /**
  * Translation class used for generating text translations.
@@ -42,128 +12,154 @@ type LanguageKey =
  * ```
  */
 export class Language {
+  private projectId: string = "unknown";
   private automaticTranslation: boolean = false;
-  private translations: Map<string, Map<string, string>> = new Map([
-    ["id_ID", new Map([])],
-    ["da_DK", new Map([])],
-    ["de_DE", new Map([])],
-    ["en_GB", new Map([])],
-    ["en_US", new Map([])],
-    ["es_ES", new Map([])],
-    ["es_MX", new Map([])],
-    ["fr_CA", new Map([])],
-    ["fr_FR", new Map([])],
-    ["it_IT", new Map([])],
-    ["hu_HU", new Map([])],
-    ["nl_NL", new Map([])],
-    ["nb_NO", new Map([])],
-    ["pl_PL", new Map([])],
-    ["pt_BR", new Map([])],
-    ["pt_PT", new Map([])],
-    ["sk_SK", new Map([])],
-    ["fi_FI", new Map([])],
-    ["sv_SE", new Map([])],
-    ["tr_TR", new Map([])],
-    ["cs_CZ", new Map([])],
-    ["el_GR", new Map([])],
-    ["bg_BG", new Map([])],
-    ["ru_RU", new Map([])],
-    ["uk_UA", new Map([])],
-    ["ja_JP", new Map([])],
-    ["zh_CN", new Map([])],
-    ["zh_TW", new Map([])],
-    ["ko_KR", new Map([])],
-  ]);
-  constructor() {}
-  public autoTranslate(options?: {
+  private rawInput: {
+    source?: LanguageKey;
+    entries: {
+      key: string;
+      text: string;
+      overrideTranslation?: [
+        {
+          source: LanguageKey;
+          text: string;
+        }
+      ];
+    }[];
+  }[] = [];
+  private languages: LanguageKey[] = defaultLanguages;
+  constructor(options?: {
     whitelistAsBlacklist?: boolean;
     whitelistLanguages?: LanguageKey[];
   }) {
-    this.automaticTranslation = true;
-    if (options) {
-      // Blacklist languages
-      if (options.whitelistAsBlacklist)
+    this.configure(options);
+  }
+  public async configure(options?: {
+    whitelistAsBlacklist?: boolean;
+    whitelistLanguages?: LanguageKey[];
+  }) {
+    // Blacklist languages
+    if (options?.whitelistAsBlacklist) {
+      const languages = defaultLanguages;
+      if (options?.whitelistLanguages)
         for (let lang of options.whitelistLanguages) {
           if (lang === "en_US") continue;
-          this.translations.delete(lang);
+          this.languages.splice(this.languages.indexOf(lang), 1);
         }
-      // Whitelist languages
-      else {
-        const translations: Map<string, Map<string, string>> = new Map([
-          ["en_US", new Map([])],
-        ]);
-        for (let lang of options.whitelistLanguages)
-          translations.set(lang, new Map([]));
-        this.translations = translations;
-      }
+      this.languages = languages;
     }
+    // Whitelist languages
+    else {
+      const languages: LanguageKey[] = ["en_US"];
+      if (options?.whitelistLanguages)
+        for (let lang of options.whitelistLanguages) languages.push(lang);
+      this.languages = languages;
+    }
+  }
+  public autoTranslate() {
+    this.automaticTranslation = true;
     return this;
   }
-  public async translate(
+  public translate(
     ...translations: {
       source?: LanguageKey;
-      key: string;
-      text: string;
-      overrideTranslations?: {
-        source: LanguageKey;
+      entries: {
+        key: string;
         text: string;
+        overrideTranslation?: [
+          {
+            source: LanguageKey;
+            text: string;
+          }
+        ];
       }[];
     }[]
   ) {
-    // Store translations
-    for (let t of translations) {
-      try {
-        this.translations.get(t.source ?? "en_US").set(t.key, t.text);
-        if (t.overrideTranslations)
-          for (let o of t.overrideTranslations) {
-            try {
-              this.translations.get(o.source).set(t.key, o.text);
-            } catch (e) {
-              Console.log(
-                `Missing language map '${o.source}'. Make sure you are not blacklisting a language that is currently in use.`
-              );
-            }
-          }
-      } catch (e) {
-        Console.log(
-          `Missing language map '${t.source}'. Make sure you are not blacklisting a language that is currently in use.`
-        );
-      }
-      // Automatic translation
-      if (this.automaticTranslation === true) {
-        for (let target of this.translations.keys()) {
-          if (!this.translations.get(target).get(t.key)) {
-            const translation = await this.feed(
-              t.text,
-              target.slice(0, target.indexOf("_"))
-            );
-            this.translations.get(target).set(t.key, translation as any);
-          }
-        }
-      }
+    this.rawInput = this.rawInput.concat(translations);
+  }
+  public async compile() {
+    if (!this.projectId || this.projectId == "unknown") {
+      Console.queue.custom(
+        `§aLanguage §cfailure§r: Property must be linked to a project.\n  §rSet it with §9project§f.§blanguage§r = §bthis§r`,
+        0
+      );
+      return;
+    }
+    const translations = this.rawInput;
+    const startTime = Benchmark.set();
+    let errors = 0;
+    let lines = 0;
+    const directoryPath = `./resource_packs/${this.projectId}/texts`;
+    const langData: { [key: string]: string } = {};
+    function pushLangData(source: LanguageKey, key: string, text: string) {
+      langData[source] ??= "";
+      langData[source] += `${key}=${text}\n`;
     }
     // Compile
-    let lines = 0;
-    for (let key of this.translations.keys()) {
-      let data = "";
-      const directoryPath = "./resource_packs/example_addon/texts";
+    try {
       if (!fs.existsSync(directoryPath)) {
         fs.mkdirSync(directoryPath, { recursive: true });
       }
-      for (let t of this.translations.get(key).entries()) {
-        data += `${t[0]}=${t[1]}\n`;
-        lines++;
+      for (const t of translations) {
+        t.source = t.source ?? "en_US";
+        if (!this.languages.includes(t.source)) continue;
+        for (const k of t.entries) {
+          pushLangData(t.source, k.key, k.text);
+          lines++;
+          let overrideMap = new Map();
+          if (k.overrideTranslation)
+            overrideMap = new Map(
+              k.overrideTranslation.map((x) => [x.source, x.text])
+            );
+          if (this.automaticTranslation) {
+            for (let language of this.languages) {
+              if (language == t.source || overrideMap.has(language)) continue;
+              pushLangData(
+                language,
+                k.key,
+                (await this.feed(
+                  k.text,
+                  language.slice(0, language.indexOf("_"))
+                )) || undefined
+              );
+              lines++;
+            }
+          }
+          for (let override of overrideMap.entries()) {
+            pushLangData(override[0], k.key, override[1]);
+            lines++;
+          }
+        }
       }
-      if (data.length > 0) {
-        fs.writeFileSync(
-          `./resource_packs/example_addon/texts/${key}.lang`,
-          data
-        );
+
+      // Write the compiled data to files
+      for (const key in langData) {
+        if (langData.hasOwnProperty(key) && langData[key].length > 0) {
+          fs.writeFileSync(
+            `./resource_packs/${this.projectId}/texts/${key}.lang`,
+            langData[key]
+          );
+        }
       }
+    } catch (e) {
+      errors++;
     }
-    Console.log(
-      `§5Compilation §asuccessful§r: §2texts§r, [${this.translations.size} languages, ${lines} lines]`
-    );
+    const endTime = Benchmark.set();
+    const elapsed = Benchmark.elapsed(startTime, endTime);
+    const languages = Object.keys(langData).length;
+    if (errors > 0) {
+      Console.queue.custom(
+        `§aLanguage §cfailure§r: '[§e${languages}§r lang; §b${lines}§r line; §c${errors} §rerrors]'`,
+        0,
+        elapsed
+      );
+    } else {
+      Console.queue.custom(
+        `§aLanguage §bgenerate§r: '[§e${languages}§r lang; §b${lines}§r line]'`,
+        0,
+        elapsed
+      );
+    }
   }
   private async feed(text: string, target: string) {
     return await translate(text, target).catch((e) => {

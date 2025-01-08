@@ -7,10 +7,11 @@ import {
   BlockSideKey,
   BlockDescriptor,
   VanillaBlockTag,
+  LanguageKey,
 } from "../../Types/types";
-import { Console, toJSON } from "../../Utilities/utils";
+import { Benchmark, Console, toJSON } from "../../Utilities/utils";
 import { FORMAT_VERSION } from "../../version";
-import { Feature } from "../classes";
+import { Project } from "../project";
 
 /**
  * Block class used for creating custom blocks.
@@ -21,15 +22,26 @@ import { Feature } from "../classes";
  * ```
  */
 export class Block {
+  private projectId: string = "unknown";
   private data: any = { format_version: FORMAT_VERSION.BLOCK };
+  private properties: any = {};
   private components: any = {};
   private identifier: string;
-  constructor(identifier: string, displayName?: string) {
+  constructor(
+    identifier: string,
+    displayName?: string,
+    language?: LanguageKey
+  ) {
     this.identifier = identifier;
     this.data["minecraft:block"] = {
       description: { identifier: this.identifier },
-      components: { "minecraft:display_name": displayName },
     };
+    if (displayName) {
+      this.properties.translation = {
+        source: language,
+        entries: [{ key: `tile.${identifier}.name`, text: displayName }],
+      };
+    }
   }
   /**
    * Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.
@@ -301,24 +313,40 @@ export class Block {
   /**
    * Compiles a finished block class to JSON. Use after all other methods on this instance to generate it.
    */
-  public compile() {
+  public compile(project: Project) {
+    if (!this.projectId || this.projectId == "unknown") {
+      Console.queue.warn(
+        `§bFeature §r'${this.identifier}' §bis not linked to a project.\n  §rAdd it to your §9project§f.§bfeatures§r array to compile it.`
+      );
+      return;
+    }
+    const startTime = Benchmark.set();
+    let errors = 0;
     try {
       this.data["minecraft:block"]["components"] = this.components;
-      const directoryPath = "./behavior_packs/example_addon/blocks";
+      const directoryPath = `./behavior_packs/${this.projectId}/blocks`;
       if (!fs.existsSync(directoryPath)) {
         fs.mkdirSync(directoryPath, { recursive: true });
       }
+      if (this.properties?.translation) {
+        project.language.translate(this.properties.translation);
+      }
       fs.writeFileSync(
-        `./behavior_packs/example_addon/blocks/${this.identifier.substring(
+        `./behavior_packs/${this.projectId}/blocks/${this.identifier.substring(
           this.identifier.indexOf(":") + 1
         )}.json`,
         JSON.stringify(this.data, null, 2)
       );
-      Console.log(
-        `§5Compilation §asuccessful§r: §bblock§r, [${this.identifier}]`
-      );
     } catch (e) {
-      Console.log(`§5Compilation §cfailed§r: §bblock§r, [${this.identifier}]`);
+      errors++;
     }
+    const endTime = Benchmark.set();
+    const elapsed = Benchmark.elapsed(startTime, endTime);
+    if (errors > 0)
+      Console.queue.err(
+        `§bblock§r, [${this.identifier}, §c${errors} §rerrors]`,
+        elapsed
+      );
+    else Console.queue.info(`§bblock§r, [${this.identifier}]`, elapsed);
   }
 }

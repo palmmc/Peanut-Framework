@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import { v4 as uuid } from "uuid";
 import { API_VERSION, MIN_ENGINE_VERSION, MODULE_VERSION } from "../../version";
+import { Benchmark, Console } from "../../Utilities/utils";
 
 function mergePreserveUuids(mn1: any, mn2: any) {
   for (const key in mn2) {
@@ -47,6 +48,37 @@ export class Manifest {
     },
   };
   constructor(options?: {
+    header?: {
+      description?: string;
+      min_engine_version?: number[];
+      name?: string;
+      uuid?: string;
+      version?: number[];
+    };
+    modules?: {
+      scripts?: {
+        entry?: string;
+      };
+    };
+    dependencies?: {
+      server?: Dependency;
+      "server-ui"?: Dependency;
+      "server-net"?: Dependency;
+      "server-gametest"?: Dependency;
+      "server-editor"?: Dependency;
+      "server-admin"?: Dependency;
+      "debug-utilities"?: Dependency;
+      [key: string]: Dependency;
+    };
+    metadata?: {
+      authors?: string[];
+      license?: string;
+      url?: string;
+    };
+  }) {
+    this.properties(options);
+  }
+  public properties(options?: {
     header?: {
       description?: string;
       min_engine_version?: number[];
@@ -145,21 +177,42 @@ export class Manifest {
   /**
    * Compiles a finished manifest class to JSON. Use after all other methods on this instance to generate it.
    */
-  public compile() {
-    // Generate Data Manifest
-    const bePath = "./behavior_packs/example_addon/manifest.json";
-    let data: any;
-    if (fs.existsSync(bePath)) {
-      const file = JSON.parse(fs.readFileSync(bePath, "utf-8"));
-      data = mergePreserveUuids(file, this.data);
-    } else data = this.data;
-    fs.writeFileSync(bePath, JSON.stringify(data, null, 2));
-    // Generate Resource Manifest
-    const rePath = "./resource_packs/example_addon/manifest.json";
-    if (fs.existsSync(rePath)) {
-      const file = JSON.parse(fs.readFileSync(rePath, "utf-8"));
-      data = mergePreserveUuids(file, this.resources);
-    } else data = this.resources;
-    fs.writeFileSync(rePath, JSON.stringify(data, null, 2));
+  public compile(rePath: string, bePath: string, oldManifest?: any) {
+    const startTime = Benchmark.set();
+    let errors = 0;
+    try {
+      rePath += "/manifest.json";
+      bePath += "/manifest.json";
+      // Generate Data Manifest
+      let data: any;
+      if (oldManifest?.be) data = mergePreserveUuids(oldManifest.be, this.data);
+      else data = this.data;
+      fs.writeFileSync(bePath, JSON.stringify(data, null, 2));
+      // Generate Resource Manifest
+      if (oldManifest?.re)
+        data = mergePreserveUuids(oldManifest.re, this.resources);
+      else data = this.resources;
+      fs.writeFileSync(rePath, JSON.stringify(data, null, 2));
+    } catch (e) {
+      errors++;
+    }
+    const endTime = Benchmark.set();
+    const elapsed = Benchmark.elapsed(startTime, endTime);
+    let bedata = "b";
+    if (this.data.modules.find((x: any) => x.type == "script"))
+      bedata += " -§cs§r";
+    let redata = "r";
+    if (errors > 0)
+      Console.queue.custom(
+        `§2Manifest §cfailure§r: '§c${errors}§r errors'`,
+        0,
+        elapsed
+      );
+    else
+      Console.queue.custom(
+        `§2Manifest §bgenerate§r: '[${bedata}; ${redata}]'`,
+        0,
+        elapsed
+      );
   }
 }

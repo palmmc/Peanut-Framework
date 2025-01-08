@@ -2,23 +2,27 @@ import { Project, Manifest, Block } from "../Classes/classes";
 
 const project = new Project("peanut_example");
 
-project.manifest = new Manifest({
+project.manifest.properties({
   //dependencies: { server: { beta: true }, "server-ui": {} },
   //modules: { scripts: {} },
   metadata: { authors: ["palm1"] },
 });
 
-project.language.autoTranslate({
-  whitelistLanguages: ["es_ES", "es_MX", "en_GB"],
-});
+project.language.autoTranslate();
+project.language.configure({ whitelistLanguages: ["es_ES", "es_MX"] });
+
 project.language.translate({
-  key: "accessibility.chat.howtoopen",
-  text: "Cookies!",
-  overrideTranslations: [{ source: "en_GB", text: "Biscuits!" }],
+  entries: [
+    {
+      key: "accessibility.chat.howtoopen",
+      text: "Cookies!",
+      overrideTranslation: [{ source: "en_GB", text: "Biscuits!" }],
+    },
+  ],
 });
 
 project.features = [
-  new Block("palm:peanut")
+  new Block("palm:peanut", "Peanut Block")
     .collisionBox({ x: -6, y: 0, z: -6 }, { x: 6, y: 12, z: 6 })
     .customComponents(["peanut:gravity"])
     .destructibleByExplosion(1)

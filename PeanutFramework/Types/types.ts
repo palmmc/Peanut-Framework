@@ -12,3 +12,5 @@ export { EntityRenderMethods } from "./Minecraft/Materials/entity";
 
 export { Geometry } from "./Minecraft/geometry";
 export { MaterialInstances } from "./Minecraft/material_instances";
+
+export { LanguageKey } from "./Minecraft/Language/key";
