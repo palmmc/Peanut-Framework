@@ -24,7 +24,7 @@ export class Console {
     console.log();
   }
   public static queue = {
-    info: (data: string, elapsed: DOMHighResTimeStamp) => {
+    info: (data: string, elapsed?: DOMHighResTimeStamp) => {
       this.logs.push({
         source: "info",
         text: replaceMinecraftColorCodes(
@@ -34,7 +34,7 @@ export class Console {
         order: 1,
       });
     },
-    err: (data: string, elapsed: DOMHighResTimeStamp) => {
+    err: (data: string, elapsed?: DOMHighResTimeStamp) => {
       this.logs.push({
         source: "err",
         text: replaceMinecraftColorCodes(`§5Compilation §cfailed§r: '${data}'`),

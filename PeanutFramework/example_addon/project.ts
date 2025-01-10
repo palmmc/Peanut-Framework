@@ -1,4 +1,11 @@
-import { Project, Manifest, Block } from "../Classes/classes";
+import {
+  Project,
+  Manifest,
+  Block,
+  Permutation,
+  Molang,
+  Item,
+} from "../Classes/classes";
 
 const project = new Project("peanut_example");
 
@@ -8,8 +15,8 @@ project.manifest.properties({
   metadata: { authors: ["palm1"] },
 });
 
-project.language.autoTranslate();
 project.language.configure({ whitelistLanguages: ["es_ES", "es_MX"] });
+project.language.autoTranslate();
 
 project.language.translate({
   entries: [
@@ -22,37 +29,43 @@ project.language.translate({
 });
 
 project.features = [
-  new Block("palm:peanut", "Peanut Block")
-    .collisionBox({ x: -6, y: 0, z: -6 }, { x: 6, y: 12, z: 6 })
-    .customComponents(["peanut:gravity"])
-    .destructibleByExplosion(1)
-    .itemVisual("geo.peanut", {
-      "*": {
-        texture: "peanut",
-        ambient_occlusion: false,
-        render_method: "opaque",
-      },
+  new Item("palm:peanut", "Peanut")
+    .icon("peanut_item", "peanut_item")
+    .menuCategory({ category: "nature", group: "itemGroup.name.crop" })
+    .rarity("epic")
+    .projectile("snowball")
+    .throwable(),
+  /*.useModifiers(0.6, 1.61)
+    .useAnimation("eat")
+    .food({ nutrition: 2, saturationModifier: 0.3 }),*/
+  new Block("palm:peanut_block", "Peanut Block")
+    .menuCategory({
+      category: "construction",
+      group: "itemGroup.name.concrete",
     })
-    .liquidDetection([
+    .variatedTexture("peanut", [
       {
-        can_contain_liquid: true,
-        liquid_type: "water",
-        on_liquid_touches: "no_reaction",
+        path: "peanut",
+        weight: 90,
       },
-    ])
-    .placementFilter([
       {
-        allowed_faces: ["north", "south"],
-        block_filter: [
-          { name: "palm:peanut2", states: { growth: 1, is_peanut: true } },
-        ],
+        path: "peanut_rare",
+        weight: 10,
       },
-    ])
-    .tag(["acacia", "diamond_pick_diggable", "peanut:extra_creamy"])
-    .transformation({
-      scale: { x: 2, y: 2, z: 2 },
-      rotation: { x: 90, y: 0, z: 0 },
-    }),
+    ]),
+  /*.rotatableTexture("cardinal", {
+      south: { name: "peanut", path: "peanut" },
+      "*": { name: "blank", path: "blank" },
+    }),*/
+  //.singleTexture("peanut", "peanut"),
+  /*.multiTexture({
+      south: { name: "peanut", path: "peanut" },
+      north: { name: "blank", path: "blank" },
+      east: { name: "blank", path: "blank" },
+      west: { name: "blank", path: "blank" },
+      up: { name: "blank", path: "blank" },
+      down: { name: "blank", path: "blank" },
+    }),*/
 ];
 
 project.compile();

@@ -8,10 +8,13 @@ import {
   BlockDescriptor,
   VanillaBlockTag,
   LanguageKey,
-} from "../../Types/types";
-import { Benchmark, Console, toJSON } from "../../Utilities/utils";
-import { FORMAT_VERSION } from "../../version";
-import { Project } from "../project";
+  VanillaBlockTraits,
+  MenuCategory,
+} from "../../../Types/types";
+import { Benchmark, Console, toJSON } from "../../../Utilities/utils";
+import { FORMAT_VERSION } from "../../../version";
+import { Project } from "../../project";
+import { Molang, Permutation } from "../../classes";
 
 /**
  * Block class used for creating custom blocks.
@@ -208,6 +211,8 @@ export class Block {
     return this;
   }
   /**
+   * ⚠️ **Incompatible with other texture methods.**
+   *
    * The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: "up", "down", "north", "south", "east", "west", or "*". You can also give an instance the name of your choosing such as "my_instance", and then assign it to a face by doing "north":"my_instance".
    * @param materialInstances The Material Instances component contains a map of material instance names/face names to material instance definitions (JSON Objects). The material instance * is required and will be used for any materials that don't have a match.
    * @param texture - Texture name for the material.
@@ -217,6 +222,38 @@ export class Block {
    */
   public materialInstances(materialInstances: MaterialInstances) {
     this.components["minecraft:material_instances"] = materialInstances;
+    return this;
+  }
+  /**
+   * Assigns this block to a menu category and/or creative item group.
+   * @param category Category to assign.
+   * @param group Creative mode group to assign.
+   * @param is_hidden_in_commands Whether or not this item should be accessible with commands.
+   */
+  public menuCategory(category: MenuCategory) {
+    this.data["minecraft:block"].description.menu_category = category;
+    return this;
+  }
+  /**
+   * Defines permutations for this block. Block permutations allow you to change your block's behavior through components when a condition is present.
+   * @param permutations List of permutations to apply to block.
+   */
+  public permutations(
+    permutations: (
+      | Permutation
+      | {
+          condition: string;
+          components: {
+            [key: string]: string | number | boolean;
+          };
+        }
+    )[]
+  ) {
+    this.data["minecraft:block"].permutations = [];
+    for (let p of permutations) {
+      if (p instanceof Permutation) p = p.compile();
+      this.data["minecraft:block"].permutations.push(p);
+    }
     return this;
   }
   /**
@@ -240,7 +277,6 @@ export class Block {
    * The basic redstone properties of a block; if the component is not provided the default values are used.
    * @param redstoneConductor Specifies if the block can be powered by redstone.
    * @param allowsWireToStepDown Specifies if redstone wire can stair-step downward on the block.
-   * @returns
    */
   public redstoneConductivity(
     redstoneConductor: boolean,
@@ -274,6 +310,36 @@ export class Block {
       interval_range: [intervalRange.min, intervalRange.max],
       looping: looping,
     };
+    return this;
+  }
+  /**
+   * Defines block states for this block. Block states allow your blocks to have variants, each with its own functionality and appearance through use of permutations.
+   * @param states List of states to apply to block.
+   * @param key Identifier used for the state.
+   * @param values Possible values for the state. The first or min value will be used as the default value for this state.
+   */
+  public states(
+    states: [
+      {
+        key: string;
+        values:
+          | boolean[]
+          | string[]
+          | number[]
+          | { values: { min: number; max: number } };
+      }
+    ]
+  ) {
+    try {
+      this.data["minecraft:block"].description.states ??= {};
+      for (let s of states) {
+        this.data["minecraft:block"].description.states[s.key] = s.values;
+      }
+    } catch (e) {
+      Console.queue.err(
+        `§bblock§r, [${this.identifier}, §cfailed to set states: ${e}]`
+      );
+    }
     return this;
   }
   /**
@@ -311,7 +377,360 @@ export class Block {
     return this;
   }
   /**
-   * Compiles a finished block class to JSON. Use after all other methods on this instance to generate it.
+   * Block traits can be used to apply vanilla block states (such as direction) to your custom blocks easily, without the need for events and triggers.
+   * @param traits List of traits to apply to block.
+   */
+  public traits(traits: VanillaBlockTraits) {
+    try {
+      this.data["minecraft:block"].description.traits = traits;
+    } catch (e) {
+      Console.queue.err(
+        `§bblock§r, [${this.identifier}, §cfailed to set traits: ${e}]`
+      );
+    }
+    return this;
+  }
+  /**
+   * ⚠️ **Incompatible with Material Instances.**
+   *
+   * Creates a simple single texture for a block.
+   * @param name Name used to register the texture.
+   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
+   */
+  public singleTexture(name: string, path: string) {
+    this.properties.blockMap = {
+      [this.identifier]: {
+        textures: name,
+      },
+    };
+    this.properties.terrainMap = {
+      [name]: {
+        textures: "textures/" + path,
+      },
+    };
+    return this;
+  }
+  /**
+   * ⚠️ **Incompatible with Material Instances.**
+   *
+   * Creates a simple multi texture for a block.
+   * @param sides Name and path definitions for each texture or side that you want to specify.
+   * @param name Name used to register the texture.
+   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
+   * @returns
+   */
+  public multiTexture(
+    sides:
+      | {
+          [key in BlockSideKey]: { name: string; path: string };
+        }
+      | {
+          [key: string]: { name: string; path: string };
+        }
+  ) {
+    this.properties.blockMap ??= { [this.identifier]: { textures: {} } };
+    this.properties.terrainMap ??= {};
+    for (let s of Object.entries(sides)) {
+      this.properties.blockMap[this.identifier].textures[s[0]] = s[1].name;
+      this.properties.terrainMap[s[1].name] = {
+        textures: "textures/" + s[1].path,
+      };
+    }
+    return this;
+  }
+  /**
+   * ⚠️ **Incompatible with Material Instances.**
+   *
+   * Makes your block rotatable.
+   * @param type Mode of rotation to use.
+   * @param sides Side textures for your block.
+   * @returns
+   */
+  public rotatableTexture(
+    type: "cardinal" | "facing" | "log",
+    sides:
+      | {
+          [key in BlockSideKey]: { name: string; path: string };
+        }
+      | {
+          [key: string]: { name: string; path: string };
+        }
+  ) {
+    this.geometry("minecraft:geometry.full_block");
+    const textures: any = {};
+    for (let s of Object.entries(sides)) {
+      textures[s[0]] = { texture: s[1].name };
+    }
+    this.materialInstances(textures);
+
+    if (type === "cardinal") {
+      this.traits({
+        "minecraft:placement_direction": {
+          enabled_states: ["minecraft:cardinal_direction"],
+        },
+      });
+      this.permutations([
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:cardinal_direction"
+              ),
+              "north",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 0, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:cardinal_direction"
+              ),
+              "west",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 90, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:cardinal_direction"
+              ),
+              "south",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 180, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:cardinal_direction"
+              ),
+              "east",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: -90, z: 0 } }),
+      ]);
+    } else if (type === "facing") {
+      this.traits({
+        "minecraft:placement_direction": {
+          enabled_states: ["minecraft:facing_direction"],
+        },
+      });
+      this.permutations([
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "down",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: -90, y: 0, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "up",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 90, y: 0, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "north",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 0, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "west",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 90, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "south",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 180, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              new Molang().query(
+                "block_state",
+                false,
+                "minecraft:facing_direction"
+              ),
+              "east",
+              "=="
+            )
+          )
+          .transformation({ rotation: { x: 0, y: -90, z: 0 } }),
+      ]);
+    } else if (type === "log") {
+      this.traits({
+        "minecraft:placement_position": {
+          enabled_states: ["minecraft:block_face"],
+        },
+      });
+      this.permutations([
+        new Permutation()
+          .condition(
+            Molang.logic(
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "west",
+                "=="
+              ),
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "east",
+                "=="
+              ),
+              "||"
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 0, z: 90 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "down",
+                "=="
+              ),
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "up",
+                "=="
+              ),
+              "||"
+            )
+          )
+          .transformation({ rotation: { x: 0, y: 0, z: 0 } }),
+        new Permutation()
+          .condition(
+            Molang.logic(
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "north",
+                "=="
+              ),
+              Molang.logic(
+                new Molang().query(
+                  "block_state",
+                  false,
+                  "minecraft:block_face"
+                ),
+                "south",
+                "=="
+              ),
+              "||"
+            )
+          )
+          .transformation({ rotation: { x: 90, y: 0, z: 0 } }),
+      ]);
+    }
+
+    this.properties.terrainMap ??= {};
+    for (let s of Object.entries(sides)) {
+      this.properties.terrainMap[s[1].name] = {
+        textures: s[1].path,
+      };
+    }
+    return this;
+  }
+
+  /**
+   * ⚠️ **Incompatible with Material Instances.**
+   *
+   * Creates a simple single texture for a block.
+   * @param name Name used to register the texture.
+   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
+   */
+  public variatedTexture(
+    name: string,
+    variations: { path: string; weight: number }[]
+  ) {
+    this.properties.blockMap = {
+      [this.identifier]: {
+        textures: name,
+      },
+    };
+    this.properties.terrainMap = {
+      [name]: {
+        textures: {
+          variations,
+        },
+      },
+    };
+    return this;
+  }
+
+  /**
+   * Compiles a finished block class to JSON. This process is automatic.
    */
   public compile(project: Project) {
     if (!this.projectId || this.projectId == "unknown") {
@@ -328,9 +747,12 @@ export class Block {
       if (!fs.existsSync(directoryPath)) {
         fs.mkdirSync(directoryPath, { recursive: true });
       }
-      if (this.properties?.translation) {
+      if (this.properties?.translation)
         project.language.translate(this.properties.translation);
-      }
+      if (this.properties?.blockMap)
+        project.blockMap.entry(this.properties.blockMap);
+      if (this.properties.terrainMap)
+        project.terrainMap.entry(this.properties.terrainMap);
       fs.writeFileSync(
         `./behavior_packs/${this.projectId}/blocks/${this.identifier.substring(
           this.identifier.indexOf(":") + 1

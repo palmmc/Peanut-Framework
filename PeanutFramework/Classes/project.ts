@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { Manifest, Language } from "./classes";
+import { Manifest, Language, TerrainMap, BlockMap, ItemMap } from "./classes";
 import { Benchmark, Console } from "../Utilities/utils";
 
 export class Project {
@@ -9,11 +9,17 @@ export class Project {
   private oldManifest: { re?: any; be?: any } = {};
   public manifest: Manifest;
   public language: Language;
+  public terrainMap: TerrainMap;
+  public blockMap: BlockMap;
+  public itemMap: ItemMap;
   public features: any[] = [];
   constructor(id: string) {
     this.id = id;
     this.manifest = new Manifest();
     this.language = new Language();
+    this.terrainMap = new TerrainMap();
+    this.blockMap = new BlockMap();
+    this.itemMap = new ItemMap();
     let redir = "./resource_packs";
     let bedir = "./behavior_packs";
     redir += `/${id}`;
@@ -47,9 +53,35 @@ export class Project {
     }
     (this.language as any).projectId = this.id;
     await this.language.compile();
+    (this.blockMap as any).projectId = this.id;
+    await this.blockMap.compile(this.redir);
+    (this.terrainMap as any).projectId = this.id;
+    await this.terrainMap.compile(this.redir);
+    (this.itemMap as any).projectId = this.id;
+    await this.itemMap.compile(this.redir);
+    const resrc = "./PeanutFramework/example_addon/resources";
+    const redest = this.redir + "/textures";
+    await this.copyFolderSync(resrc, redest);
     const endTime = Benchmark.set();
     const elapsed = Benchmark.elapsed(startTime, endTime);
     Console.queue.custom("§l§5Compilation completed§r", 5, elapsed);
     Console.writeQueue();
+  }
+  private async copyFolderSync(resrc: string, redest: string) {
+    if (!fs.existsSync(redest)) {
+      await fs.mkdirSync(redest, { recursive: true });
+    }
+    const files = await fs.readdirSync(resrc);
+    for (const file of files) {
+      const sourcePath = `${resrc}/${file}`;
+      const destinationPath = `${redest}/${file}`;
+
+      const stat = fs.statSync(sourcePath);
+      if (stat.isFile()) {
+        await fs.copyFileSync(sourcePath, destinationPath);
+      } else if (stat.isDirectory()) {
+        await this.copyFolderSync(sourcePath, destinationPath);
+      }
+    }
   }
 }
