@@ -284,7 +284,7 @@ const deploy_localmc = gulp.series(
   clean_localmc,
   function (callbackFunction) {
     if (!useMinecraftDedicatedServer) {
-      console.log("\007"); // annunciate a beep!
+      console.log("\x07"); // annunciate a beep!
     }
     callbackFunction();
   },
@@ -334,7 +334,7 @@ function startServer(callbackFunction) {
         if (message) {
           if (message.indexOf("Server started.") >= 0) {
             activeServer.stdin.write("script debugger listen 19144\n");
-            console.log("\007"); // annunciate a beep!
+            console.log("\x07"); // annunciate a beep!
           }
           console.log("Server: " + message);
         }

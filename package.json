@@ -13,6 +13,21 @@
     "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "typedoc": "^0.27.6",
+    "typedoc-plugin-markdown": "^4.4.1"
+  },
+  "typedocOptions": {
+    "plugin": [
+      "typedoc-plugin-markdown"
+    ],
+    "out": "./docs",
+    "entryPointStrategy": "expand",
+    "entryPoints": [
+      "./PeanutFramework"
+    ]
+  },
+  "scripts": {
+    "docs": "typedoc"
   }
 }

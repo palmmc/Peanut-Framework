@@ -1,4 +1,4 @@
-import { Vector } from "./vector";
+import { Vector } from "../../Types/types";
 
 export class toJSON {
   public static Vector(vector?: Vector) {

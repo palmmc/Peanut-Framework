@@ -1,0 +1,11 @@
+[**peanut-framework**](../../../../../README.md)
+
+***
+
+[peanut-framework](../../../../../modules.md) / [Types/Minecraft/Block/tags](../README.md) / VanillaBlockTag
+
+# Type Alias: VanillaBlockTag
+
+> **VanillaBlockTag**: `"acacia"` \| `"birch"` \| `"dark_oak"` \| `"diamond_pick_diggable"` \| `"dirt"` \| `"fertilize_area"` \| `"grass"` \| `"gravel"` \| `"gold_pick_diggable"` \| `"iron_pick_diggable"` \| `"jungle"` \| `"log"` \| `"metal"` \| `"minecraft:crop"` \| `"minecraft:diamond_tier_destructible"` \| `"minecraft:iron_tier_destructible"` \| `"minecraft:is_hatchet_item_destructible"` \| `"minecraft:is_hoe_item_destructible"` \| `"minecraft:is_item_tier_destructible"` \| `"minecraft:is_mace_item_destructible"` \| `"minecraft:is_pickaxe_item_destructible"` \| `"minecraft:is_shears_item_destructible"` \| `"minecraft:is_shovel_item_destructible"` \| `"minecraft:is_sword_item_destructible"` \| `"minecraft:netherite_tier_destructible"` \| `"minecraft:stone_tier_destructible"` \| `"mob_spawner"` \| `"not_feature_replaceable"` \| `"oak"` \| `"one_way_collidable"` \| `"plant"` \| `"pumpkin"` \| `"rail"` \| `"sand"` \| `"snow"` \| `"spruce"` \| `"stone"` \| `"stone_pick_diggable"` \| `"text_sign"` \| `"trapdoors"` \| `"water"` \| `"wood"` \| `"wood_pick_diggable"`
+
+Defined in: [Types/Minecraft/Block/tags.ts:1](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Types/Minecraft/Block/tags.ts#L1)
