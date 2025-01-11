@@ -89,7 +89,7 @@
   }
 
   /* Remove underline from all text within grid cards */
-  .grid-cards a {
-    text-decoration: none; 
+  a, a:hover, a:focus, a:active {
+      text-decoration: none !important;
   }
 </style>

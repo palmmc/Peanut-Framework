@@ -45,6 +45,8 @@ export class TerrainMap {
     }
   }
   public compile(rePath: string) {
+    const entries = Object.keys(this.data.texture_data).length;
+    if (entries <= 0) return;
     const startTime = Benchmark.set();
     let errors = 0;
     try {
@@ -67,9 +69,7 @@ export class TerrainMap {
       );
     else
       Console.queue.custom(
-        `§aTerrainMap §bgenerate§r: '[§e${
-          Object.keys(this.data.texture_data).length
-        }§r entries]'`,
+        `§aTerrainMap §bgenerate§r: '[§e${entries}§r entries]'`,
         0,
         elapsed
       );

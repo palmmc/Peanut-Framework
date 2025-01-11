@@ -10,15 +10,17 @@ import {
   LanguageKey,
   VanillaBlockTraits,
   MenuCategory,
-} from "../../../Types/types";
-import { Benchmark, Console, toJSON } from "../../../Utilities/utils";
-import { FORMAT_VERSION } from "../../../version";
-import { Project } from "../../project";
-import { Molang, Permutation } from "../../classes";
+} from "../../Types/types";
+import { Benchmark, Console, toJSON } from "../../Utilities/utils";
+import { FORMAT_VERSION } from "../../version";
+import { Project } from "../project";
+import { Molang, Permutation } from "../classes";
 
 /**
  * Block class used for creating custom blocks.
  * @param identifier The string that is used in-game to identify the block.
+ * @param displayName Optional (but recommended), the string to show up as the display name of the block in-game.
+ * @param language Optional, the language the display name originates from. Defaults to `en_US`.
  * ### Example
  * ```ts
  * new Block("peanut:example", "Example Block")

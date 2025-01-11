@@ -5,11 +5,21 @@ import { LanguageKey } from "../../Types/types";
 
 /**
  * Translation class used for generating text translations.
- * @param identifier The string that is used in-game to identify the block.
+ *
+ * Generates multiple `xx_XX.lang` files based on specified translations.
+ * 
  * ### Example
  * ```ts
- * new Block("peanut:example", "Example Block")
- * ```
+ * project.language.translate({
+  entries: [
+    {
+      key: "accessibility.chat.howtoopen",
+      text: "Press T to tell us you like Cookies!",
+      overrideTranslation: [{ source: "en_GB", text: "Press T to tell us you like Biscuits!" }],
+    },
+  ],
+});
+```
  */
 export class Language {
   private projectId: string = "unknown";
@@ -85,6 +95,7 @@ export class Language {
       );
       return;
     }
+    if (this.rawInput.length <= 0) return;
     const translations = this.rawInput;
     const startTime = Benchmark.set();
     let errors = 0;

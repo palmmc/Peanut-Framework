@@ -15,13 +15,18 @@ export class Project {
   public features: any[] = [];
   constructor(id: string) {
     this.id = id;
+    // Initialize project properties.
     this.manifest = new Manifest();
     this.language = new Language();
     this.terrainMap = new TerrainMap();
     this.blockMap = new BlockMap();
     this.itemMap = new ItemMap();
+    // Create ./rp_packs and ./bp_packs folders.
     let redir = "./resource_packs";
     let bedir = "./behavior_packs";
+    if (!fs.existsSync(redir)) fs.mkdirSync(redir);
+    if (!fs.existsSync(bedir)) fs.mkdirSync(bedir);
+    // Create or remove target pack folder.
     redir += `/${id}`;
     bedir += `/${id}`;
     if (!fs.existsSync(redir)) fs.mkdirSync(redir);
@@ -59,9 +64,16 @@ export class Project {
     await this.terrainMap.compile(this.redir);
     (this.itemMap as any).projectId = this.id;
     await this.itemMap.compile(this.redir);
-    const resrc = "./PeanutFramework/example_addon/resources";
+    const resrc = `./${this.id}/resources`;
     const redest = this.redir + "/textures";
-    await this.copyFolderSync(resrc, redest);
+    try {
+      await this.copyFolderSync(resrc, redest);
+    } catch (e) {
+      Console.log(
+        "§cError: §rOne or more directories does not exist.\n§bCheck to make sure the name of your project folder and your project ID match.§r"
+      );
+      return;
+    }
     const endTime = Benchmark.set();
     const elapsed = Benchmark.elapsed(startTime, endTime);
     Console.queue.custom("§l§5Compilation completed§r", 5, elapsed);

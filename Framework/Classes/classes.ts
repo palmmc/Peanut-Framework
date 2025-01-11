@@ -1,4 +1,4 @@
-export { Block } from "./Features/Block/block";
+export { Block } from "./Features/block";
 export { Permutation } from "./Features/Block/permutation";
 export { Item } from "./Features/item";
 

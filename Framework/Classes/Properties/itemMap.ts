@@ -2,12 +2,9 @@ import * as fs from "fs";
 import { Benchmark, Console } from "../../Utilities/utils";
 
 /**
- * Item map class used for generating text translations.
- * @param identifier The string that is used in-game to identify the block.
- * ### Example
- * ```ts
- * new Block("peanut:example", "Example Block")
- * ```
+ * Item map class for generating item texture mappings.
+ *
+ * Generates as `item_texture.json`
  */
 export class ItemMap {
   private projectId = "unknown";
@@ -27,6 +24,8 @@ export class ItemMap {
     }
   }
   public compile(rePath: string) {
+    const entries = Object.keys(this.data.texture_data).length;
+    if (entries <= 0) return;
     const startTime = Benchmark.set();
     let errors = 0;
     try {
@@ -49,9 +48,7 @@ export class ItemMap {
       );
     else
       Console.queue.custom(
-        `§aItemMap §bgenerate§r: '[§e${
-          Object.keys(this.data.texture_data).length
-        }§r entries]'`,
+        `§aItemMap §bgenerate§r: '[§e${entries}§r entries]'`,
         0,
         elapsed
       );

@@ -4,4 +4,3 @@ behavior_packs
 .vitepress/dist
 .vitepress/cache
 .vscode
-config.yaml

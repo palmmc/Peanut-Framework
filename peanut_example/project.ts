@@ -5,15 +5,17 @@ import {
   Permutation,
   Molang,
   Item,
-} from "../Classes/classes";
+} from "../Framework/Classes/classes";
 
 const project = new Project("peanut_example");
 
+/*
 project.manifest.properties({
   //dependencies: { server: { beta: true }, "server-ui": {} },
   //modules: { scripts: {} },
   metadata: { authors: ["palm1"] },
 });
+*/
 
 project.language.configure({ whitelistLanguages: ["es_ES", "es_MX"] });
 project.language.autoTranslate();
@@ -35,9 +37,11 @@ project.features = [
     .rarity("epic")
     .projectile("snowball")
     .throwable(),
-  /*.useModifiers(0.6, 1.61)
+  /*
+  .useModifiers(0.6, 1.61)
     .useAnimation("eat")
-    .food({ nutrition: 2, saturationModifier: 0.3 }),*/
+    .food({ nutrition: 2, saturationModifier: 0.3 }),
+    */
   new Block("palm:peanut_block", "Peanut Block")
     .menuCategory({
       category: "construction",
@@ -53,19 +57,23 @@ project.features = [
         weight: 10,
       },
     ]),
-  /*.rotatableTexture("cardinal", {
+  /*
+  .rotatableTexture("cardinal", {
       south: { name: "peanut", path: "peanut" },
       "*": { name: "blank", path: "blank" },
-    }),*/
+    }),
+    */
   //.singleTexture("peanut", "peanut"),
-  /*.multiTexture({
+  /*
+  .multiTexture({
       south: { name: "peanut", path: "peanut" },
       north: { name: "blank", path: "blank" },
       east: { name: "blank", path: "blank" },
       west: { name: "blank", path: "blank" },
       up: { name: "blank", path: "blank" },
       down: { name: "blank", path: "blank" },
-    }),*/
+    }),
+    */
 ];
 
 project.compile();

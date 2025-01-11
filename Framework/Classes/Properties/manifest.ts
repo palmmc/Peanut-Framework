@@ -24,11 +24,13 @@ type Dependency = {
 
 /**
  * Manifest class used to create a pack manifest.
- * @param identifier The string that is used in-game to identify the block.
+ * @param options Options for constructing a manifest.
  * ### Example
  * ```ts
- * new Block("peanut:example", "Example Block")
- * ```
+ * project.manifest = new Manifest({
+ *    header: { name: "Peanut Example", description: "Example pack" },
+ * });
+ ```
  */
 export class Manifest {
   private data: any = {

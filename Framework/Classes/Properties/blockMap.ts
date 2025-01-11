@@ -4,12 +4,9 @@ import { Benchmark, Console } from "../../Utilities/utils";
 import { FORMAT_VERSION } from "../../version";
 
 /**
- * Terrain map class used for generating text translations.
- * @param identifier The string that is used in-game to identify the block.
- * ### Example
- * ```ts
- * new Block("peanut:example", "Example Block")
- * ```
+ * Block map class for generating block texture and sound mappings.
+ *
+ * Generates as `blocks.json`
  */
 export class BlockMap {
   private projectId = "unknown";
@@ -36,6 +33,8 @@ export class BlockMap {
     }
   }
   public compile(rePath: string) {
+    const entries = Object.keys(this.data).length - 1;
+    if (entries <= 0) return;
     const startTime = Benchmark.set();
     let errors = 0;
     try {
@@ -55,9 +54,7 @@ export class BlockMap {
       );
     else
       Console.queue.custom(
-        `§aBlockMap §bgenerate§r: '[§e${
-          Object.keys(this.data).length - 1
-        }§r entries]'`,
+        `§aBlockMap §bgenerate§r: '[§e${entries}§r entries]'`,
         0,
         elapsed
       );

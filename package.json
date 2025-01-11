@@ -9,6 +9,7 @@
     "gulp-cli": "^2.3.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
+    "js-yaml": "^4.1.0",
     "translate": "^3.0.1",
     "uuid": "^11.0.3"
   },
