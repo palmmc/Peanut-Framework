@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../../README.md)
-
-***
-
-[peanut-framework](../../../../../modules.md) / [Classes/Features/Block/block](../README.md) / Block
+[peanut-framework](../../../../../modules.md) / [Classes/Features/Block/block](../index.md) / Block
 
 # Class: Block
-
-Defined in: [Classes/Features/Block/block.ts:27](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L27)
 
 Block class used for creating custom blocks.
 
@@ -22,9 +16,12 @@ new Block("peanut:example", "Example Block")
 
 ### new Block()
 
-> **new Block**(`identifier`, `displayName`?, `language`?): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:33](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L33)
+```ts
+new Block(
+   identifier, 
+   displayName?, 
+   language?): Block
+```
 
 #### Parameters
 
@@ -48,9 +45,9 @@ Defined in: [Classes/Features/Block/block.ts:33](https://github.com/palmmc/Peanu
 
 ### collisionBox()
 
-> **collisionBox**(`origin`, `size`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:54](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L54)
+```ts
+collisionBox(origin, size): Block
+```
 
 Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.
 
@@ -76,9 +73,9 @@ Size of each side of the collision box. Size is specified as {x: number, y: numb
 
 ### compile()
 
-> **compile**(`project`): `void`
-
-Defined in: [Classes/Features/Block/block.ts:735](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L735)
+```ts
+compile(project): void
+```
 
 Compiles a finished block class to JSON. This process is automatic.
 
@@ -96,9 +93,9 @@ Compiles a finished block class to JSON. This process is automatic.
 
 ### craftingTable()
 
-> **craftingTable**(`craftingTags`, `tableName`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:66](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L66)
+```ts
+craftingTable(craftingTags, tableName): Block
+```
 
 Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. This component supports only "recipe_shaped" and "recipe_shapeless" typed recipes and not others like "recipe_furnace" or "recipe_brewing_mix". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.
 
@@ -124,9 +121,9 @@ Specifies the language file key that maps to what text will be displayed in the 
 
 ### customComponents()
 
-> **customComponents**(`components`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:77](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L77)
+```ts
+customComponents(components): Block
+```
 
 Sets an ordered list of custom component names which are bound in script to be executed upon a block event.
 
@@ -146,9 +143,9 @@ String array of custom component IDs.
 
 ### destructibleByExplosion()
 
-> **destructibleByExplosion**(`explosionResistance`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:85](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L85)
+```ts
+destructibleByExplosion(explosionResistance): Block
+```
 
 Describes the destructible by explosion properties for this block. If set to true, the block will have the default explosion resistance. If set to false, this block is indestructible by explosion. If the component is omitted, the block will have the default explosion resistance.
 
@@ -168,9 +165,9 @@ Sets the explosion resistance for the block. Greater values result in greater re
 
 ### destructibleByMining()
 
-> **destructibleByMining**(`secondsToDestroy`, `itemSpecificSpeeds`?): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:98](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L98)
+```ts
+destructibleByMining(secondsToDestroy, itemSpecificSpeeds?): Block
+```
 
 Describes the destructible by mining properties for this block. If set to true, the block will take the default number of seconds to destroy. If set to false, this block is indestructible by mining. If the component is omitted, the block will take the default number of seconds to destroy.
 
@@ -196,9 +193,9 @@ Optional array of objects to describe item specific block destroy speeds, each o
 
 ### flammable()
 
-> **flammable**(`catchChanceModifier`, `destroyChanceModifier`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:116](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L116)
+```ts
+flammable(catchChanceModifier, destroyChanceModifier): Block
+```
 
 Describes the flammable properties for this block. If set to true, default values are used. If set to false, or if this component is omitted, the block will not be able to catch on fire naturally from neighbors, but it can still be directly ignited.
 
@@ -224,9 +221,9 @@ A modifier affecting the chance that this block will be destroyed by flames when
 
 ### friction()
 
-> **friction**(`friction`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:127](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L127)
+```ts
+friction(friction): Block
+```
 
 Describes the friction for this block in a range of (0.0-0.9). Friction affects an entity's movement speed when it travels on the block. Greater value results in more friction.
 
@@ -246,9 +243,9 @@ Value of friction from 0.0-0.9, with higher values resulting in more friction.
 
 ### geometry()
 
-> **geometry**(`geometry`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:135](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L135)
+```ts
+geometry(geometry): Block
+```
 
 The description identifier of the geometry to use to render this block. This identifier must either match an existing geometry identifier in any of the loaded resource packs or be one of the currently supported Vanilla identifiers: "minecraft:geometry.full_block" or "minecraft:geometry.cross".
 
@@ -268,9 +265,9 @@ Geometry object or identifier to use to render this block.
 
 ### itemVisual()
 
-> **itemVisual**(`geometry`, `materialInstances`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:145](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L145)
+```ts
+itemVisual(geometry, materialInstances): Block
+```
 
 The description identifier of the geometry and material used to render the item of this block.
  ### **Requires `Upcoming Features` toggle**
@@ -297,9 +294,9 @@ The Material Instances component that will be used for the item.
 
 ### lightDampening()
 
-> **lightDampening**(`lightDampening`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:156](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L156)
+```ts
+lightDampening(lightDampening): Block
+```
 
 The amount that light will be dampened when it passes through the block, in a range (0-15). Higher value means the light will be dampened more.
 
@@ -319,9 +316,9 @@ Amount of light to be dampened.
 
 ### lightEmission()
 
-> **lightEmission**(`lightEmission`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:164](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L164)
+```ts
+lightEmission(lightEmission): Block
+```
 
 The amount of light this block will emit in a range (0-15). Higher value means more light will be emitted.
 
@@ -341,9 +338,9 @@ Amount of light to be emitted.
 
 ### liquidDetection()
 
-> **liquidDetection**(`detectionRules`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:177](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L177)
+```ts
+liquidDetection(detectionRules): Block
+```
 
 Liquid detection is a component that defines how a block behaves when detecting liquid. Only one rule definition is allowed per liquid type. If multiple are specified, the first will be used and the rest will be ignored.
 ### **Requires `Upcoming Features` toggle**
@@ -364,9 +361,9 @@ Detection rule array for when this block comes in contact with a certain liquid.
 
 ### loot()
 
-> **loot**(`loot`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:201](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L201)
+```ts
+loot(loot): Block
+```
 
 Defines a loot table for a block to drop when broken.
 
@@ -386,9 +383,9 @@ The path to the loot table, relative to the behavior pack. Path string is limite
 
 ### mapColor()
 
-> **mapColor**(`color`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:209](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L209)
+```ts
+mapColor(color): Block
+```
 
 Sets the color of the block when rendered to a map. The color is represented as a hex value in the format "#RRGGBB". May also be expressed as an array of [R, G, B] from 0 to 255. If this component is omitted, the block will not show up on the map.
 
@@ -408,9 +405,9 @@ Color of the block when rendered to a map.
 
 ### materialInstances()
 
-> **materialInstances**(`materialInstances`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:223](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L223)
+```ts
+materialInstances(materialInstances): Block
+```
 
 ⚠️ **Incompatible with other texture methods.**
 
@@ -432,9 +429,9 @@ The Material Instances component contains a map of material instance names/face 
 
 ### menuCategory()
 
-> **menuCategory**(`category`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:233](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L233)
+```ts
+menuCategory(category): Block
+```
 
 Assigns this block to a menu category and/or creative item group.
 
@@ -454,9 +451,9 @@ Category to assign.
 
 ### multiTexture()
 
-> **multiTexture**(`sides`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:422](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L422)
+```ts
+multiTexture(sides): Block
+```
 
 ⚠️ **Incompatible with Material Instances.**
 
@@ -468,7 +465,40 @@ Creates a simple multi texture for a block.
 
 Name and path definitions for each texture or side that you want to specify.
 
-\{ `all`: \{ `name`: `string`; `path`: `string`; \}; `down`: \{ `name`: `string`; `path`: `string`; \}; `east`: \{ `name`: `string`; `path`: `string`; \}; `north`: \{ `name`: `string`; `path`: `string`; \}; `side`: \{ `name`: `string`; `path`: `string`; \}; `south`: \{ `name`: `string`; `path`: `string`; \}; `up`: \{ `name`: `string`; `path`: `string`; \}; `west`: \{ `name`: `string`; `path`: `string`; \}; \} | \{\}
+\{
+`all`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`down`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`east`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`north`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`side`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`south`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`up`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`west`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+\} | \{\}
 
 #### Returns
 
@@ -478,9 +508,9 @@ Name and path definitions for each texture or side that you want to specify.
 
 ### permutations()
 
-> **permutations**(`permutations`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:241](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L241)
+```ts
+permutations(permutations): Block
+```
 
 Defines permutations for this block. Block permutations allow you to change your block's behavior through components when a condition is present.
 
@@ -488,7 +518,12 @@ Defines permutations for this block. Block permutations allow you to change your
 
 ##### permutations
 
-([`Permutation`](../../permutation/classes/Permutation.md) \| \{ `components`: \{\}; `condition`: `string`; \})[]
+(
+  \| [`Permutation`](../../permutation/classes/Permutation.md)
+  \| \{
+  `components`: \{\};
+  `condition`: `string`;
+ \})[]
 
 List of permutations to apply to block.
 
@@ -500,9 +535,9 @@ List of permutations to apply to block.
 
 ### placementFilter()
 
-> **placementFilter**(`conditions`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:265](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L265)
+```ts
+placementFilter(conditions): Block
+```
 
 Sets rules for under what conditions the block can be placed/survive
 
@@ -522,9 +557,9 @@ List of conditions where the block can be placed/survive. Limited to 64 conditio
 
 ### redstoneConductivity()
 
-> **redstoneConductivity**(`redstoneConductor`, `allowsWireToStepDown`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:281](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L281)
+```ts
+redstoneConductivity(redstoneConductor, allowsWireToStepDown): Block
+```
 
 The basic redstone properties of a block; if the component is not provided the default values are used.
 
@@ -550,9 +585,9 @@ Specifies if redstone wire can stair-step downward on the block.
 
 ### rotatableTexture()
 
-> **rotatableTexture**(`type`, `sides`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:449](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L449)
+```ts
+rotatableTexture(type, sides): Block
+```
 
 ⚠️ **Incompatible with Material Instances.**
 
@@ -570,7 +605,40 @@ Mode of rotation to use.
 
 Side textures for your block.
 
-\{ `all`: \{ `name`: `string`; `path`: `string`; \}; `down`: \{ `name`: `string`; `path`: `string`; \}; `east`: \{ `name`: `string`; `path`: `string`; \}; `north`: \{ `name`: `string`; `path`: `string`; \}; `side`: \{ `name`: `string`; `path`: `string`; \}; `south`: \{ `name`: `string`; `path`: `string`; \}; `up`: \{ `name`: `string`; `path`: `string`; \}; `west`: \{ `name`: `string`; `path`: `string`; \}; \} | \{\}
+\{
+`all`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`down`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`east`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`north`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`side`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`south`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`up`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+`west`: \{
+`name`: `string`;
+`path`: `string`;
+\};
+\} | \{\}
 
 #### Returns
 
@@ -580,9 +648,9 @@ Side textures for your block.
 
 ### selectionBox()
 
-> **selectionBox**(`origin`, `size`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:296](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L296)
+```ts
+selectionBox(origin, size): Block
+```
 
 Selection Box is a JSON Object component that defines the area of the block that is selected by the player's cursor. If set to true, default values are used. If set to false, this block is not selectable by the player's cursor. If this component is omitted, default values are used.
 
@@ -608,9 +676,9 @@ Size of each side of the selection box. Size is specified as {x: number, y: numb
 
 ### singleTexture()
 
-> **singleTexture**(`name`, `path`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:400](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L400)
+```ts
+singleTexture(name, path): Block
+```
 
 ⚠️ **Incompatible with Material Instances.**
 
@@ -638,9 +706,9 @@ Relative to the `/resources/` folder within this project. (Ex. `./resources/pean
 
 ### states()
 
-> **states**(`states`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:321](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L321)
+```ts
+states(states): Block
+```
 
 Defines block states for this block. Block states allow your blocks to have variants, each with its own functionality and appearance through use of permutations.
 
@@ -648,7 +716,18 @@ Defines block states for this block. Block states allow your blocks to have vari
 
 ##### states
 
-\[\{ `key`: `string`; `values`: `string`[] \| `number`[] \| `boolean`[] \| \{ `values`: \{ `max`: `number`; `min`: `number`; \}; \}; \}\]
+\[\{
+  `key`: `string`;
+  `values`:   \| `string`[]
+     \| `number`[]
+     \| `boolean`[]
+     \| \{
+     `values`: \{
+        `max`: `number`;
+        `min`: `number`;
+       \};
+    \};
+ \}\]
 
 List of states to apply to block.
 
@@ -660,9 +739,9 @@ List of states to apply to block.
 
 ### tag()
 
-> **tag**(`tags`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:349](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L349)
+```ts
+tag(tags): Block
+```
 
 Tags are empty JSON Objects that define a tag to be added to a block. The component has no body or parameters, it is simply a flag, and when the block is parsed it will be added to the block's tag list.
 
@@ -682,9 +761,9 @@ A list of tags to be added to the block.
 
 ### tick()
 
-> **tick**(`intervalRange`, `looping`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:308](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L308)
+```ts
+tick(intervalRange, looping): Block
+```
 
 Causes the block to tick after a random delay in the range specified by interval_range.
 
@@ -716,9 +795,9 @@ Whether this block should continuously tick, rather than only ticking once.
 
 ### traits()
 
-> **traits**(`traits`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:383](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L383)
+```ts
+traits(traits): Block
+```
 
 Block traits can be used to apply vanilla block states (such as direction) to your custom blocks easily, without the need for events and triggers.
 
@@ -738,9 +817,9 @@ List of traits to apply to block.
 
 ### transformation()
 
-> **transformation**(`options`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:363](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L363)
+```ts
+transformation(options): Block
+```
 
 Transformation supports rotation, scaling, and translation. Rotation and scaling around a pivot is also supported. The component can be added to a whole block and/or to individual block permutations. Transformed geometries retain the same restrictions that non-transformed geometries have, such as a maximum size of 30/16 units.
 
@@ -776,9 +855,9 @@ Transformation supports rotation, scaling, and translation. Rotation and scaling
 
 ### variatedTexture()
 
-> **variatedTexture**(`name`, `variations`): [`Block`](Block.md)
-
-Defined in: [Classes/Features/Block/block.ts:713](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/block.ts#L713)
+```ts
+variatedTexture(name, variations): Block
+```
 
 ⚠️ **Incompatible with Material Instances.**
 

@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Classes/Expressions/molang](../README.md) / Molang
+[peanut-framework](../../../../modules.md) / [Classes/Expressions/molang](../index.md) / Molang
 
 # Class: Molang
-
-Defined in: [Classes/Expressions/molang.ts:11](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L11)
 
 Molang class used to construct Molang expressions.
 
@@ -14,9 +8,9 @@ Molang class used to construct Molang expressions.
 
 ### new Molang()
 
-> **new Molang**(`expression`?): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:14](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L14)
+```ts
+new Molang(expression?): Molang
+```
 
 #### Parameters
 
@@ -32,17 +26,17 @@ Defined in: [Classes/Expressions/molang.ts:14](https://github.com/palmmc/Peanut-
 
 ### expression
 
-> **expression**: `string` = `""`
-
-Defined in: [Classes/Expressions/molang.ts:12](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L12)
+```ts
+expression: string = "";
+```
 
 ## Methods
 
 ### constBool()
 
-> **constBool**(`value`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:31](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L31)
+```ts
+constBool(value): Molang
+```
 
 Adds a constant boolean to a Molang expression.
 
@@ -62,9 +56,9 @@ Boolean value.
 
 ### constNum()
 
-> **constNum**(`value`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:40](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L40)
+```ts
+constNum(value): Molang
+```
 
 Adds a constant number to a Molang expression.
 
@@ -84,9 +78,9 @@ Int or float value.
 
 ### constStr()
 
-> **constStr**(`value`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:22](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L22)
+```ts
+constStr(value): Molang
+```
 
 Adds a constant string to a Molang expression.
 
@@ -106,9 +100,9 @@ String value.
 
 ### flowStatement()
 
-> **flowStatement**(`statement`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:95](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L95)
+```ts
+flowStatement(statement): Molang
+```
 
 Adds a flow statement to a Molang expression.
 
@@ -128,9 +122,9 @@ Statement to add.
 
 ### math()
 
-> **math**(`mathFunction`, ...`args`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:77](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L77)
+```ts
+math(mathFunction, ...args): Molang
+```
 
 Adds a math function to a Molang expression.
 
@@ -156,9 +150,9 @@ Argument(s) to pass to the function.
 
 ### operator()
 
-> **operator**(`operator`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:86](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L86)
+```ts
+operator(operator): Molang
+```
 
 Adds an operator to a Molang expression.
 
@@ -178,9 +172,12 @@ Operator to add.
 
 ### query()
 
-> **query**(`queryFunction`, `inverted`?, ...`args`?): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:60](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L60)
+```ts
+query(
+   queryFunction, 
+   inverted?, ...
+   args?): Molang
+```
 
 Adds a query function to a Molang expression.
 
@@ -210,9 +207,9 @@ Argument(s) to pass to the function.
 
 ### string()
 
-> **string**(`str`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:104](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L104)
+```ts
+string(str): Molang
+```
 
 Adds a string directly to a Molang expression.
 
@@ -232,9 +229,9 @@ String to add.
 
 ### variable()
 
-> **variable**(`name`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:49](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L49)
+```ts
+variable(name): Molang
+```
 
 Calls a variable in a Molang expression.
 
@@ -254,9 +251,12 @@ Variable name to call.
 
 ### conditional()
 
-> `static` **conditional**(`condition`, `ifTrue`, `ifFalse`?): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:137](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L137)
+```ts
+static conditional(
+   condition, 
+   ifTrue, 
+   ifFalse?): Molang
+```
 
 Adds a conditional expression using a binary or ternary operator.
 
@@ -288,9 +288,12 @@ Evaluate false condition.
 
 ### logic()
 
-> `static` **logic**(`value1`, `value2`, `operator`): [`Molang`](Molang.md)
-
-Defined in: [Classes/Expressions/molang.ts:115](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Expressions/molang.ts#L115)
+```ts
+static logic(
+   value1, 
+   value2, 
+   operator): Molang
+```
 
 Performs a logical operation or comparison between two expressions or values.
 

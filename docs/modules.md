@@ -1,50 +1,39 @@
-[**peanut-framework**](README.md)
-
-***
-
 # peanut-framework
 
 ## Modules
 
-- [Classes/classes](Classes/classes/README.md)
-- [Classes/Expressions/molang](Classes/Expressions/molang/README.md)
-- [Classes/Features/Block/block](Classes/Features/Block/block/README.md)
-- [Classes/Features/Block/permutation](Classes/Features/Block/permutation/README.md)
-- [Classes/Features/feature](Classes/Features/feature/README.md)
-- [Classes/Features/Item/item](Classes/Features/Item/item/README.md)
-- [Classes/project](Classes/project/README.md)
-- [Classes/Properties/blockMap](Classes/Properties/blockMap/README.md)
-- [Classes/Properties/itemMap](Classes/Properties/itemMap/README.md)
-- [Classes/Properties/language](Classes/Properties/language/README.md)
-- [Classes/Properties/manifest](Classes/Properties/manifest/README.md)
-- [Classes/Properties/terrainMap](Classes/Properties/terrainMap/README.md)
-- [example\_addon/project](example_addon/project/README.md)
-- [Types/Common/vector](Types/Common/vector/README.md)
-- [Types/Minecraft/Block/blockStates](Types/Minecraft/Block/blockStates/README.md)
-- [Types/Minecraft/Block/sides](Types/Minecraft/Block/sides/README.md)
-- [Types/Minecraft/Block/tags](Types/Minecraft/Block/tags/README.md)
-- [Types/Minecraft/Block/traits](Types/Minecraft/Block/traits/README.md)
-- [Types/Minecraft/Definitions/menuCategory](Types/Minecraft/Definitions/menuCategory/README.md)
-- [Types/Minecraft/Descriptors/block](Types/Minecraft/Descriptors/block/README.md)
-- [Types/Minecraft/Descriptors/item](Types/Minecraft/Descriptors/item/README.md)
-- [Types/Minecraft/Enchantment/slot](Types/Minecraft/Enchantment/slot/README.md)
-- [Types/Minecraft/geometry](Types/Minecraft/geometry/README.md)
-- [Types/Minecraft/Item/equipmentSlot](Types/Minecraft/Item/equipmentSlot/README.md)
-- [Types/Minecraft/Item/tags](Types/Minecraft/Item/tags/README.md)
-- [Types/Minecraft/Item/useAnimation](Types/Minecraft/Item/useAnimation/README.md)
-- [Types/Minecraft/Language/key](Types/Minecraft/Language/key/README.md)
-- [Types/Minecraft/material\_instances](Types/Minecraft/material_instances/README.md)
-- [Types/Minecraft/Materials/block](Types/Minecraft/Materials/block/README.md)
-- [Types/Minecraft/Materials/entity](Types/Minecraft/Materials/entity/README.md)
-- [Types/Minecraft/Molang/flowStatements](Types/Minecraft/Molang/flowStatements/README.md)
-- [Types/Minecraft/Molang/math](Types/Minecraft/Molang/math/README.md)
-- [Types/Minecraft/Molang/operators](Types/Minecraft/Molang/operators/README.md)
-- [Types/Minecraft/Molang/queries](Types/Minecraft/Molang/queries/README.md)
-- [Types/types](Types/types/README.md)
-- [Utilities/Common/benchmark](Utilities/Common/benchmark/README.md)
-- [Utilities/Common/json](Utilities/Common/json/README.md)
-- [Utilities/Console/colors](Utilities/Console/colors/README.md)
-- [Utilities/Console/console](Utilities/Console/console/README.md)
-- [Utilities/Minecraft/Language/default](Utilities/Minecraft/Language/default/README.md)
-- [Utilities/utils](Utilities/utils/README.md)
-- [version](version/README.md)
+| Module | Description |
+| ------ | ------ |
+| [Classes/classes](Classes/classes/index.md) | - |
+| [Classes/Expressions/molang](Classes/Expressions/molang/index.md) | - |
+| [Classes/Features/Block/block](Classes/Features/Block/block/index.md) | - |
+| [Classes/Features/Block/permutation](Classes/Features/Block/permutation/index.md) | - |
+| [Classes/Features/item](Classes/Features/item/index.md) | - |
+| [Classes/project](Classes/project/index.md) | - |
+| [Classes/Properties/blockMap](Classes/Properties/blockMap/index.md) | - |
+| [Classes/Properties/itemMap](Classes/Properties/itemMap/index.md) | - |
+| [Classes/Properties/language](Classes/Properties/language/index.md) | - |
+| [Classes/Properties/manifest](Classes/Properties/manifest/index.md) | - |
+| [Classes/Properties/terrainMap](Classes/Properties/terrainMap/index.md) | - |
+| [Types/Common/vector](Types/Common/vector/index.md) | - |
+| [Types/Minecraft/Block/blockStates](Types/Minecraft/Block/blockStates/index.md) | - |
+| [Types/Minecraft/Block/sides](Types/Minecraft/Block/sides/index.md) | - |
+| [Types/Minecraft/Block/tags](Types/Minecraft/Block/tags/index.md) | - |
+| [Types/Minecraft/Block/traits](Types/Minecraft/Block/traits/index.md) | - |
+| [Types/Minecraft/Definitions/menuCategory](Types/Minecraft/Definitions/menuCategory/index.md) | - |
+| [Types/Minecraft/Descriptors/block](Types/Minecraft/Descriptors/block/index.md) | - |
+| [Types/Minecraft/Descriptors/item](Types/Minecraft/Descriptors/item/index.md) | - |
+| [Types/Minecraft/Enchantment/slot](Types/Minecraft/Enchantment/slot/index.md) | - |
+| [Types/Minecraft/geometry](Types/Minecraft/geometry/index.md) | - |
+| [Types/Minecraft/Item/equipmentSlot](Types/Minecraft/Item/equipmentSlot/index.md) | - |
+| [Types/Minecraft/Item/tags](Types/Minecraft/Item/tags/index.md) | - |
+| [Types/Minecraft/Item/useAnimation](Types/Minecraft/Item/useAnimation/index.md) | - |
+| [Types/Minecraft/Language/key](Types/Minecraft/Language/key/index.md) | - |
+| [Types/Minecraft/material\_instances](Types/Minecraft/material_instances/index.md) | - |
+| [Types/Minecraft/Materials/block](Types/Minecraft/Materials/block/index.md) | - |
+| [Types/Minecraft/Materials/entity](Types/Minecraft/Materials/entity/index.md) | - |
+| [Types/Minecraft/Molang/flowStatements](Types/Minecraft/Molang/flowStatements/index.md) | - |
+| [Types/Minecraft/Molang/math](Types/Minecraft/Molang/math/index.md) | - |
+| [Types/Minecraft/Molang/operators](Types/Minecraft/Molang/operators/index.md) | - |
+| [Types/Minecraft/Molang/queries](Types/Minecraft/Molang/queries/index.md) | - |
+| [Types/types](Types/types/index.md) | - |

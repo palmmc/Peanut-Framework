@@ -1,33 +1,39 @@
-[**peanut-framework**](../../../../../README.md)
-
-***
-
-[peanut-framework](../../../../../modules.md) / [Types/Minecraft/Block/traits](../README.md) / VanillaBlockTraits
+[peanut-framework](../../../../../modules.md) / [Types/Minecraft/Block/traits](../index.md) / VanillaBlockTraits
 
 # Type Alias: VanillaBlockTraits
 
-> **VanillaBlockTraits**: `object`
-
-Defined in: [Types/Minecraft/Block/traits.ts:1](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Types/Minecraft/Block/traits.ts#L1)
+```ts
+type VanillaBlockTraits = object;
+```
 
 ## Type declaration
 
 ### minecraft:placement\_direction?
 
-> `optional` **minecraft:placement\_direction**: `object`
+```ts
+optional minecraft:placement_direction: object;
+```
 
 #### minecraft:placement\_direction.enabled\_states
 
-> **enabled\_states**: (`"minecraft:cardinal_direction"` \| `"minecraft:facing_direction"`)[]
+```ts
+enabled_states: ("minecraft:cardinal_direction" | "minecraft:facing_direction")[];
+```
 
 #### minecraft:placement\_direction.y\_rotation\_offset?
 
-> `optional` **y\_rotation\_offset**: `90` \| `180` \| `-90`
+```ts
+optional y_rotation_offset: 90 | 180 | -90;
+```
 
 ### minecraft:placement\_position?
 
-> `optional` **minecraft:placement\_position**: `object`
+```ts
+optional minecraft:placement_position: object;
+```
 
 #### minecraft:placement\_position.enabled\_states
 
-> **enabled\_states**: (`"minecraft:block_face"` \| `"minecraft:vertical_half"`)[]
+```ts
+enabled_states: ("minecraft:block_face" | "minecraft:vertical_half")[];
+```

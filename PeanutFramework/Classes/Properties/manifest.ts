@@ -151,7 +151,7 @@ export class Manifest {
     }
     this.data.metadata.authors = options?.metadata?.authors;
     this.data.metadata.license = options?.metadata?.license;
-    this.data.metadata.url = options?.metadata.url;
+    this.data.metadata.url = options?.metadata?.url;
     // Resource Manifest
     this.resources.header = {
       description:
@@ -172,7 +172,7 @@ export class Manifest {
     ];
     this.resources.metadata.authors = options?.metadata?.authors;
     this.resources.metadata.license = options?.metadata?.license;
-    this.resources.metadata.url = options?.metadata.url;
+    this.resources.metadata.url = options?.metadata?.url;
   }
   /**
    * Compiles a finished manifest class to JSON. Use after all other methods on this instance to generate it.

@@ -15,19 +15,36 @@
   "devDependencies": {
     "@types/node": "^22.10.5",
     "typedoc": "^0.27.6",
-    "typedoc-plugin-markdown": "^4.4.1"
+    "typedoc-plugin-markdown": "^4.4.1",
+    "typedoc-vitepress-theme": "^1.1.2",
+    "vitepress": "^1.5.0"
   },
   "typedocOptions": {
     "plugin": [
-      "typedoc-plugin-markdown"
+      "typedoc-plugin-markdown",
+      "typedoc-vitepress-theme"
     ],
     "out": "./docs",
     "entryPointStrategy": "expand",
     "entryPoints": [
-      "./PeanutFramework"
-    ]
+      "./PeanutFramework/Classes",
+      "./PeanutFramework/Types"
+    ],
+    "navigation": {
+      "includeCategories": false,
+      "includeGroups": false,
+      "includeFolders": false,
+      "compactFolders": false,
+      "excludeReferences": true
+    },
+    "categorizeByGroup": false,
+    "indexFormat": "table",
+    "useCodeBlocks": true,
+    "disableSources": true
   },
   "scripts": {
-    "docs": "typedoc"
+    "predocs": "typedoc",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build"
   }
 }

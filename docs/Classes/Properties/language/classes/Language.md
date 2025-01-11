@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Classes/Properties/language](../README.md) / Language
+[peanut-framework](../../../../modules.md) / [Classes/Properties/language](../index.md) / Language
 
 # Class: Language
-
-Defined in: [Classes/Properties/language.ts:14](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L14)
 
 Translation class used for generating text translations.
 
@@ -22,9 +16,9 @@ new Block("peanut:example", "Example Block")
 
 ### new Language()
 
-> **new Language**(`options`?): [`Language`](Language.md)
-
-Defined in: [Classes/Properties/language.ts:31](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L31)
+```ts
+new Language(options?): Language
+```
 
 #### Parameters
 
@@ -46,9 +40,9 @@ Defined in: [Classes/Properties/language.ts:31](https://github.com/palmmc/Peanut
 
 ### autoTranslate()
 
-> **autoTranslate**(): [`Language`](Language.md)
-
-Defined in: [Classes/Properties/language.ts:59](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L59)
+```ts
+autoTranslate(): Language
+```
 
 #### Returns
 
@@ -58,9 +52,9 @@ Defined in: [Classes/Properties/language.ts:59](https://github.com/palmmc/Peanut
 
 ### compile()
 
-> **compile**(): `Promise`\<`void`\>
-
-Defined in: [Classes/Properties/language.ts:80](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L80)
+```ts
+compile(): Promise<void>
+```
 
 #### Returns
 
@@ -70,9 +64,9 @@ Defined in: [Classes/Properties/language.ts:80](https://github.com/palmmc/Peanut
 
 ### configure()
 
-> **configure**(`options`?): `Promise`\<`void`\>
-
-Defined in: [Classes/Properties/language.ts:37](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L37)
+```ts
+configure(options?): Promise<void>
+```
 
 #### Parameters
 
@@ -94,9 +88,9 @@ Defined in: [Classes/Properties/language.ts:37](https://github.com/palmmc/Peanut
 
 ### translate()
 
-> **translate**(...`translations`): `void`
-
-Defined in: [Classes/Properties/language.ts:63](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/language.ts#L63)
+```ts
+translate(...translations): void
+```
 
 #### Parameters
 

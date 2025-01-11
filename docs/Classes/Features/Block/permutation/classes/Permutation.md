@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../../README.md)
-
-***
-
-[peanut-framework](../../../../../modules.md) / [Classes/Features/Block/permutation](../README.md) / Permutation
+[peanut-framework](../../../../../modules.md) / [Classes/Features/Block/permutation](../index.md) / Permutation
 
 # Class: Permutation
-
-Defined in: [Classes/Features/Block/permutation.ts:16](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L16)
 
 Permutation class used for creating custom block permutations.
 
@@ -14,9 +8,9 @@ Permutation class used for creating custom block permutations.
 
 ### new Permutation()
 
-> **new Permutation**(): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:19](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L19)
+```ts
+new Permutation(): Permutation
+```
 
 #### Returns
 
@@ -26,9 +20,9 @@ Defined in: [Classes/Features/Block/permutation.ts:19](https://github.com/palmmc
 
 ### collisionBox()
 
-> **collisionBox**(`origin`, `size`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:25](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L25)
+```ts
+collisionBox(origin, size): Permutation
+```
 
 Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.
 
@@ -54,9 +48,9 @@ Size of each side of the collision box. Size is specified as {x: number, y: numb
 
 ### compile()
 
-> **compile**(): `object`
-
-Defined in: [Classes/Features/Block/permutation.ts:291](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L291)
+```ts
+compile(): object
+```
 
 #### Returns
 
@@ -64,19 +58,23 @@ Defined in: [Classes/Features/Block/permutation.ts:291](https://github.com/palmm
 
 ##### components
 
-> **components**: `any`
+```ts
+components: any;
+```
 
 ##### condition
 
-> **condition**: `string`
+```ts
+condition: string;
+```
 
 ***
 
 ### condition()
 
-> **condition**(`expression`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:287](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L287)
+```ts
+condition(expression): Permutation
+```
 
 #### Parameters
 
@@ -92,9 +90,9 @@ Defined in: [Classes/Features/Block/permutation.ts:287](https://github.com/palmm
 
 ### craftingTable()
 
-> **craftingTable**(`craftingTags`, `tableName`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:37](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L37)
+```ts
+craftingTable(craftingTags, tableName): Permutation
+```
 
 Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. This component supports only "recipe_shaped" and "recipe_shapeless" typed recipes and not others like "recipe_furnace" or "recipe_brewing_mix". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.
 
@@ -120,9 +118,9 @@ Specifies the language file key that maps to what text will be displayed in the 
 
 ### customComponents()
 
-> **customComponents**(`components`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:48](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L48)
+```ts
+customComponents(components): Permutation
+```
 
 Sets an ordered list of custom component names which are bound in script to be executed upon a block event.
 
@@ -142,9 +140,9 @@ String array of custom component IDs.
 
 ### destructibleByExplosion()
 
-> **destructibleByExplosion**(`explosionResistance`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:56](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L56)
+```ts
+destructibleByExplosion(explosionResistance): Permutation
+```
 
 Describes the destructible by explosion properties for this block. If set to true, the block will have the default explosion resistance. If set to false, this block is indestructible by explosion. If the component is omitted, the block will have the default explosion resistance.
 
@@ -164,9 +162,9 @@ Sets the explosion resistance for the block. Greater values result in greater re
 
 ### destructibleByMining()
 
-> **destructibleByMining**(`secondsToDestroy`, `itemSpecificSpeeds`?): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:69](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L69)
+```ts
+destructibleByMining(secondsToDestroy, itemSpecificSpeeds?): Permutation
+```
 
 Describes the destructible by mining properties for this block. If set to true, the block will take the default number of seconds to destroy. If set to false, this block is indestructible by mining. If the component is omitted, the block will take the default number of seconds to destroy.
 
@@ -192,9 +190,9 @@ Optional array of objects to describe item specific block destroy speeds, each o
 
 ### flammable()
 
-> **flammable**(`catchChanceModifier`, `destroyChanceModifier`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:87](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L87)
+```ts
+flammable(catchChanceModifier, destroyChanceModifier): Permutation
+```
 
 Describes the flammable properties for this block. If set to true, default values are used. If set to false, or if this component is omitted, the block will not be able to catch on fire naturally from neighbors, but it can still be directly ignited.
 
@@ -220,9 +218,9 @@ A modifier affecting the chance that this block will be destroyed by flames when
 
 ### friction()
 
-> **friction**(`friction`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:98](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L98)
+```ts
+friction(friction): Permutation
+```
 
 Describes the friction for this block in a range of (0.0-0.9). Friction affects an entity's movement speed when it travels on the block. Greater value results in more friction.
 
@@ -242,9 +240,9 @@ Value of friction from 0.0-0.9, with higher values resulting in more friction.
 
 ### geometry()
 
-> **geometry**(`geometry`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:106](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L106)
+```ts
+geometry(geometry): Permutation
+```
 
 The description identifier of the geometry to use to render this block. This identifier must either match an existing geometry identifier in any of the loaded resource packs or be one of the currently supported Vanilla identifiers: "minecraft:geometry.full_block" or "minecraft:geometry.cross".
 
@@ -264,9 +262,9 @@ Geometry object or identifier to use to render this block.
 
 ### itemVisual()
 
-> **itemVisual**(`geometry`, `materialInstances`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:116](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L116)
+```ts
+itemVisual(geometry, materialInstances): Permutation
+```
 
 The description identifier of the geometry and material used to render the item of this block.
  ### **Requires `Upcoming Features` toggle**
@@ -293,9 +291,9 @@ The Material Instances component that will be used for the item.
 
 ### lightDampening()
 
-> **lightDampening**(`lightDampening`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:127](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L127)
+```ts
+lightDampening(lightDampening): Permutation
+```
 
 The amount that light will be dampened when it passes through the block, in a range (0-15). Higher value means the light will be dampened more.
 
@@ -315,9 +313,9 @@ Amount of light to be dampened.
 
 ### lightEmission()
 
-> **lightEmission**(`lightEmission`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:135](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L135)
+```ts
+lightEmission(lightEmission): Permutation
+```
 
 The amount of light this block will emit in a range (0-15). Higher value means more light will be emitted.
 
@@ -337,9 +335,9 @@ Amount of light to be emitted.
 
 ### liquidDetection()
 
-> **liquidDetection**(`detectionRules`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:148](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L148)
+```ts
+liquidDetection(detectionRules): Permutation
+```
 
 Liquid detection is a component that defines how a block behaves when detecting liquid. Only one rule definition is allowed per liquid type. If multiple are specified, the first will be used and the rest will be ignored.
 ### **Requires `Upcoming Features` toggle**
@@ -360,9 +358,9 @@ Detection rule array for when this block comes in contact with a certain liquid.
 
 ### loot()
 
-> **loot**(`loot`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:172](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L172)
+```ts
+loot(loot): Permutation
+```
 
 Defines a loot table for a block to drop when broken.
 
@@ -382,9 +380,9 @@ The path to the loot table, relative to the behavior pack. Path string is limite
 
 ### mapColor()
 
-> **mapColor**(`color`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:180](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L180)
+```ts
+mapColor(color): Permutation
+```
 
 Sets the color of the block when rendered to a map. The color is represented as a hex value in the format "#RRGGBB". May also be expressed as an array of [R, G, B] from 0 to 255. If this component is omitted, the block will not show up on the map.
 
@@ -404,9 +402,9 @@ Color of the block when rendered to a map.
 
 ### materialInstances()
 
-> **materialInstances**(`materialInstances`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:192](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L192)
+```ts
+materialInstances(materialInstances): Permutation
+```
 
 The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: "up", "down", "north", "south", "east", "west", or "*". You can also give an instance the name of your choosing such as "my_instance", and then assign it to a face by doing "north":"my_instance".
 
@@ -426,9 +424,9 @@ The Material Instances component contains a map of material instance names/face 
 
 ### placementFilter()
 
-> **placementFilter**(`conditions`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:202](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L202)
+```ts
+placementFilter(conditions): Permutation
+```
 
 Sets rules for under what conditions the block can be placed/survive
 
@@ -448,9 +446,9 @@ List of conditions where the block can be placed/survive. Limited to 64 conditio
 
 ### redstoneConductivity()
 
-> **redstoneConductivity**(`redstoneConductor`, `allowsWireToStepDown`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:219](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L219)
+```ts
+redstoneConductivity(redstoneConductor, allowsWireToStepDown): Permutation
+```
 
 The basic redstone properties of a block; if the component is not provided the default values are used.
 
@@ -476,9 +474,9 @@ Specifies if redstone wire can stair-step downward on the block.
 
 ### selectionBox()
 
-> **selectionBox**(`origin`, `size`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:234](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L234)
+```ts
+selectionBox(origin, size): Permutation
+```
 
 Selection Box is a JSON Object component that defines the area of the block that is selected by the player's cursor. If set to true, default values are used. If set to false, this block is not selectable by the player's cursor. If this component is omitted, default values are used.
 
@@ -504,9 +502,9 @@ Size of each side of the selection box. Size is specified as {x: number, y: numb
 
 ### tag()
 
-> **tag**(`tags`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:257](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L257)
+```ts
+tag(tags): Permutation
+```
 
 Tags are empty JSON Objects that define a tag to be added to a block. The component has no body or parameters, it is simply a flag, and when the block is parsed it will be added to the block's tag list.
 
@@ -526,9 +524,9 @@ A list of tags to be added to the block.
 
 ### tick()
 
-> **tick**(`intervalRange`, `looping`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:246](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L246)
+```ts
+tick(intervalRange, looping): Permutation
+```
 
 Causes the block to tick after a random delay in the range specified by interval_range.
 
@@ -560,9 +558,9 @@ Whether this block should continuously tick, rather than only ticking once.
 
 ### transformation()
 
-> **transformation**(`options`): [`Permutation`](Permutation.md)
-
-Defined in: [Classes/Features/Block/permutation.ts:271](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Features/Block/permutation.ts#L271)
+```ts
+transformation(options): Permutation
+```
 
 Transformation supports rotation, scaling, and translation. Rotation and scaling around a pivot is also supported. The component can be added to a whole block and/or to individual block permutations. Transformed geometries retain the same restrictions that non-transformed geometries have, such as a maximum size of 30/16 units.
 

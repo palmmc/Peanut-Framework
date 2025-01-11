@@ -1,4 +1,4 @@
 behaviorPackSource: ./behavior_packs/peanut_example
 resourcePackSource: ./resource_packs/peanut_example
-behaviorPackTarget: ...\development_behavior_packs\peanut_example
-resourcePackTarget: ...\development_resource_packs\peanut_example
+behaviorPackTarget: C:\Users\chris\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_behavior_packs\peanut_example
+resourcePackTarget: C:\Users\chris\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs\peanut_example

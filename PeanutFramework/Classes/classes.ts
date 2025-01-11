@@ -1,7 +1,6 @@
 export { Block } from "./Features/Block/block";
 export { Permutation } from "./Features/Block/permutation";
-export { Item } from "./Features/Item/item";
-export { Feature } from "./Features/feature";
+export { Item } from "./Features/item";
 
 export { Language } from "./Properties/language";
 export { Manifest } from "./Properties/manifest";

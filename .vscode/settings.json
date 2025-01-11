@@ -1,0 +1,12 @@
+{
+  "workspaceKeybindings.peanutBuild.enabled": true,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "PeanutFramework\\\\example_addon.*\\.ts$",
+        "cmd": "tsx --no-deprecation ${file}",
+        "runIn": "terminal"
+      }
+    ]
+  }
+}

@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Classes/Properties/manifest](../README.md) / Manifest
+[peanut-framework](../../../../modules.md) / [Classes/Properties/manifest](../index.md) / Manifest
 
 # Class: Manifest
-
-Defined in: [Classes/Properties/manifest.ts:33](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/manifest.ts#L33)
 
 Manifest class used to create a pack manifest.
 
@@ -22,9 +16,9 @@ new Block("peanut:example", "Example Block")
 
 ### new Manifest()
 
-> **new Manifest**(`options`?): [`Manifest`](Manifest.md)
-
-Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/manifest.ts#L50)
+```ts
+new Manifest(options?): Manifest
+```
 
 #### Parameters
 
@@ -32,7 +26,15 @@ Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut
 
 ###### dependencies
 
-\{ `[key: string]`: `Dependency`;  `debug-utilities`: `Dependency`; `server`: `Dependency`; `server-admin`: `Dependency`; `server-editor`: `Dependency`; `server-gametest`: `Dependency`; `server-net`: `Dependency`; `server-ui`: `Dependency`; \}
+\{
+`[key: string]`: `Dependency`;   `debug-utilities`: `Dependency`;
+  `server`: `Dependency`;
+  `server-admin`: `Dependency`;
+  `server-editor`: `Dependency`;
+  `server-gametest`: `Dependency`;
+  `server-net`: `Dependency`;
+  `server-ui`: `Dependency`;
+ \}
 
 ###### dependencies.debug-utilities
 
@@ -64,7 +66,13 @@ Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut
 
 ###### header
 
-\{ `description`: `string`; `min_engine_version`: `number`[]; `name`: `string`; `uuid`: `string`; `version`: `number`[]; \}
+\{
+  `description`: `string`;
+  `min_engine_version`: `number`[];
+  `name`: `string`;
+  `uuid`: `string`;
+  `version`: `number`[];
+ \}
 
 ###### header.description
 
@@ -88,7 +96,11 @@ Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut
 
 ###### metadata
 
-\{ `authors`: `string`[]; `license`: `string`; `url`: `string`; \}
+\{
+  `authors`: `string`[];
+  `license`: `string`;
+  `url`: `string`;
+ \}
 
 ###### metadata.authors
 
@@ -104,11 +116,17 @@ Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut
 
 ###### modules
 
-\{ `scripts`: \{ `entry`: `string`; \}; \}
+\{
+  `scripts`: \{
+     `entry`: `string`;
+    \};
+ \}
 
 ###### modules.scripts
 
-\{ `entry`: `string`; \}
+\{
+  `entry`: `string`;
+ \}
 
 ###### modules.scripts.entry
 
@@ -122,9 +140,12 @@ Defined in: [Classes/Properties/manifest.ts:50](https://github.com/palmmc/Peanut
 
 ### compile()
 
-> **compile**(`rePath`, `bePath`, `oldManifest`?): `void`
-
-Defined in: [Classes/Properties/manifest.ts:180](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/manifest.ts#L180)
+```ts
+compile(
+   rePath, 
+   bePath, 
+   oldManifest?): void
+```
 
 Compiles a finished manifest class to JSON. Use after all other methods on this instance to generate it.
 
@@ -150,9 +171,9 @@ Compiles a finished manifest class to JSON. Use after all other methods on this 
 
 ### properties()
 
-> **properties**(`options`?): `void`
-
-Defined in: [Classes/Properties/manifest.ts:81](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/manifest.ts#L81)
+```ts
+properties(options?): void
+```
 
 #### Parameters
 
@@ -160,7 +181,15 @@ Defined in: [Classes/Properties/manifest.ts:81](https://github.com/palmmc/Peanut
 
 ###### dependencies
 
-\{ `[key: string]`: `Dependency`;  `debug-utilities`: `Dependency`; `server`: `Dependency`; `server-admin`: `Dependency`; `server-editor`: `Dependency`; `server-gametest`: `Dependency`; `server-net`: `Dependency`; `server-ui`: `Dependency`; \}
+\{
+`[key: string]`: `Dependency`;   `debug-utilities`: `Dependency`;
+  `server`: `Dependency`;
+  `server-admin`: `Dependency`;
+  `server-editor`: `Dependency`;
+  `server-gametest`: `Dependency`;
+  `server-net`: `Dependency`;
+  `server-ui`: `Dependency`;
+ \}
 
 ###### dependencies.debug-utilities
 
@@ -192,7 +221,13 @@ Defined in: [Classes/Properties/manifest.ts:81](https://github.com/palmmc/Peanut
 
 ###### header
 
-\{ `description`: `string`; `min_engine_version`: `number`[]; `name`: `string`; `uuid`: `string`; `version`: `number`[]; \}
+\{
+  `description`: `string`;
+  `min_engine_version`: `number`[];
+  `name`: `string`;
+  `uuid`: `string`;
+  `version`: `number`[];
+ \}
 
 ###### header.description
 
@@ -216,7 +251,11 @@ Defined in: [Classes/Properties/manifest.ts:81](https://github.com/palmmc/Peanut
 
 ###### metadata
 
-\{ `authors`: `string`[]; `license`: `string`; `url`: `string`; \}
+\{
+  `authors`: `string`[];
+  `license`: `string`;
+  `url`: `string`;
+ \}
 
 ###### metadata.authors
 
@@ -232,11 +271,17 @@ Defined in: [Classes/Properties/manifest.ts:81](https://github.com/palmmc/Peanut
 
 ###### modules
 
-\{ `scripts`: \{ `entry`: `string`; \}; \}
+\{
+  `scripts`: \{
+     `entry`: `string`;
+    \};
+ \}
 
 ###### modules.scripts
 
-\{ `entry`: `string`; \}
+\{
+  `entry`: `string`;
+ \}
 
 ###### modules.scripts.entry
 

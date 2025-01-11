@@ -2,3 +2,5 @@ node_modules
 package-lock.json
 resource_packs
 behavior_packs
+.vitepress/dist
+.vitepress/cache

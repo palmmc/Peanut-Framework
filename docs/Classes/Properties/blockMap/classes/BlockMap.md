@@ -1,12 +1,6 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Classes/Properties/blockMap](../README.md) / BlockMap
+[peanut-framework](../../../../modules.md) / [Classes/Properties/blockMap](../index.md) / BlockMap
 
 # Class: BlockMap
-
-Defined in: [Classes/Properties/blockMap.ts:14](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/blockMap.ts#L14)
 
 Terrain map class used for generating text translations.
 
@@ -22,7 +16,9 @@ new Block("peanut:example", "Example Block")
 
 ### new BlockMap()
 
-> **new BlockMap**(): [`BlockMap`](BlockMap.md)
+```ts
+new BlockMap(): BlockMap
+```
 
 #### Returns
 
@@ -32,9 +28,9 @@ new Block("peanut:example", "Example Block")
 
 ### compile()
 
-> **compile**(`rePath`): `void`
-
-Defined in: [Classes/Properties/blockMap.ts:38](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/blockMap.ts#L38)
+```ts
+compile(rePath): void
+```
 
 #### Parameters
 
@@ -50,9 +46,9 @@ Defined in: [Classes/Properties/blockMap.ts:38](https://github.com/palmmc/Peanut
 
 ### entry()
 
-> **entry**(`entries`): `void`
-
-Defined in: [Classes/Properties/blockMap.ts:19](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Classes/Properties/blockMap.ts#L19)
+```ts
+entry(entries): void
+```
 
 #### Parameters
 

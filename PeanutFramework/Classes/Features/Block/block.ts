@@ -405,7 +405,7 @@ export class Block {
     };
     this.properties.terrainMap = {
       [name]: {
-        textures: "textures/" + path,
+        textures: path,
       },
     };
     return this;

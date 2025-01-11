@@ -1,14 +1,10 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Types/Common/vector](../README.md) / Vector
+[peanut-framework](../../../../modules.md) / [Types/Common/vector](../index.md) / Vector
 
 # Type Alias: Vector
 
-> **Vector**: `object`
-
-Defined in: [Types/Common/vector.ts:8](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Types/Common/vector.ts#L8)
+```ts
+type Vector = object;
+```
 
 Simple 3D vector.
 
@@ -16,15 +12,21 @@ Simple 3D vector.
 
 ### x
 
-> **x**: `number`
+```ts
+x: number;
+```
 
 ### y
 
-> **y**: `number`
+```ts
+y: number;
+```
 
 ### z
 
-> **z**: `number`
+```ts
+z: number;
+```
 
 ## Param
 

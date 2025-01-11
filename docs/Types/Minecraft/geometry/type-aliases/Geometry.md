@@ -1,14 +1,15 @@
-[**peanut-framework**](../../../../README.md)
-
-***
-
-[peanut-framework](../../../../modules.md) / [Types/Minecraft/geometry](../README.md) / Geometry
+[peanut-framework](../../../../modules.md) / [Types/Minecraft/geometry](../index.md) / Geometry
 
 # Type Alias: Geometry
 
-> **Geometry**: \{ `bone_visibility`: \{\}; `identifier`: `string`; \} \| `string`
-
-Defined in: [Types/Minecraft/geometry.ts:10](https://github.com/palmmc/Peanut-Framework/blob/a953dc2db1f7e00237b91b5b1f38f50520700085/PeanutFramework/Types/Minecraft/geometry.ts#L10)
+```ts
+type Geometry = 
+  | {
+  bone_visibility: {};
+  identifier: string;
+ }
+  | string;
+```
 
 Geometry is an JSON component that specifies the geometry identifier and bone visibility to use to render this block. This identifier must match an existing geometry identifier in any of the currently loaded resource packs.
 
