@@ -1,4 +1,4 @@
-<a href="../../"><img src="/public/favicon.svg?raw=true" width="128">
+<a href="../../"><img src="/public/favicon.svg?raw=true" width="128"></img></a>
 
 <div align="left">
   
