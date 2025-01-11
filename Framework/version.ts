@@ -19,14 +19,14 @@
                                                                                 created by palm1
  */
 
-export const API_VERSION = "0.0.1-ALPHA";
-export const MIN_ENGINE_VERSION = [1, 21, 50];
-export const FORMAT_VERSION = {
+const API_VERSION = "0.0.1-ALPHA";
+const MIN_ENGINE_VERSION = [1, 21, 50];
+const FORMAT_VERSION = {
   BLOCK: "1.21.50",
   ITEM: "1.21.50",
   BLOCKMAP: "1.21.40",
 };
-export const MODULE_VERSION = {
+const MODULE_VERSION = {
   server: {
     latest: "1.16.0",
     beta: "1.17.0-beta.1.21.51-stable",
@@ -51,3 +51,5 @@ export const MODULE_VERSION = {
     beta: "1.0.0-beta.1.21.51-stable",
   },
 };
+
+export { API_VERSION, MIN_ENGINE_VERSION, FORMAT_VERSION, MODULE_VERSION };

@@ -66,14 +66,7 @@ export class Project {
     await this.itemMap.compile(this.redir);
     const resrc = `./${this.id}/resources`;
     const redest = this.redir + "/textures";
-    try {
-      await this.copyFolderSync(resrc, redest);
-    } catch (e) {
-      Console.log(
-        "§cError: §rOne or more directories does not exist.\n§bCheck to make sure the name of your project folder and your project ID match.§r"
-      );
-      return;
-    }
+    if (fs.existsSync(resrc)) await this.copyFolderSync(resrc, redest);
     const endTime = Benchmark.set();
     const elapsed = Benchmark.elapsed(startTime, endTime);
     Console.queue.custom("§l§5Compilation completed§r", 5, elapsed);

@@ -133,7 +133,7 @@ export class Manifest {
         type: "script",
         uuid: uuid(),
         version: [0, 0, 1],
-        entry: options?.modules?.scripts.entry ?? "scripts/main.js",
+        entry: "scripts/" + (options?.modules?.scripts.entry ?? "main.js"),
       });
     if (options?.dependencies) {
       this.data.dependencies = [];
