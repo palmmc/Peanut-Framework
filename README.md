@@ -22,7 +22,7 @@ With this framework, programming features for Minecraft: Bedrock Edition no long
 # Demo
 
 <p align="center"> 
-<video controls muted style='border:16px solid #202127; border-radius: 10px; pointer-events: none;' width="100%" height="100%" autoplay playsinline loop>
+<video>
   <source src="/assets/demo.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
