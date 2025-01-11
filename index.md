@@ -4,11 +4,7 @@ layout: home
 hero:
   name: Peanut Framework
   text: Build Addons with <span style="color:#bfcaf5">Typescript</span>.
-  image:
-    {
-      light: "/assets/icons/logo-light.svg",
-      dark: "/assets/icons/logo-dark.svg",
-    }
+  image: { light: "/logo-light.svg", dark: "/logo-dark.svg" }
   tagline: Take your addon creation to the next level.
   actions:
     - theme: brand
