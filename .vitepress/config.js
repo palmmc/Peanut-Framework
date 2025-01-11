@@ -4,7 +4,6 @@ export default {
   ignoreDeadLinks: true,
   title: "Peanut Framework",
   description: "A robust framework for creating bedrock addons in Typescript.",
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
     logo: {
       light: "/logo-light.svg",
