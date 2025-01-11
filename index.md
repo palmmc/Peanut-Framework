@@ -4,7 +4,11 @@ layout: home
 hero:
   name: Peanut Framework
   text: Build Addons with <span style="color:#bfcaf5">Typescript</span>.
-  image: { light: "/logo-light.svg", dark: "/logo-dark.svg" }
+  image:
+    {
+      light: "./assets/icons/logo-light.svg",
+      dark: "./assets/icons/logo-dark.svg",
+    }
   tagline: Take your addon creation to the next level.
   actions:
     - theme: brand
@@ -32,8 +36,8 @@ features:
 <div style="height: 45px;"></div>
 
 <p align="center"> 
-<video style='border:16px solid #202127; border-radius: 10px;' width="100%" height="100%" autoplay loop>
-  <source src="/demo.mp4" type="video/mp4" />
+<video controls muted style='border:16px solid #202127; border-radius: 10px;' width="100%" height="100%" autoplay loop>
+  <source src="./assets/demo.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 </p>
