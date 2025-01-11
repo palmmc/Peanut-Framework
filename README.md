@@ -19,10 +19,6 @@ If you're interested, head over to **www.peanut.wiki**.
 
 With this framework, programming features for Minecraft: Bedrock Edition no longer stops at creating scripts; Peanut Framework aims to empower you to utilize types to their fullest and make any structure straight from your IDE. Once you're ready, you'll be able to compile your pack, and the required JSON components will be generated automatically.
 
-# Demo
-
-[![Watch the video](/assets/demo.mp4)
-
 # Samples
 
 The latest sample packs are available in the [Releases](releases/) tab.
