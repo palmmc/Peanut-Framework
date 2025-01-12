@@ -1,5 +1,5 @@
 {
-  "name": "@peanut/sample-project",
+  "name": "peanut-sample-project",
   "version": "0.0.1",
   "description": "Sample project for Peanut Framework",
   "repository": {
@@ -17,7 +17,7 @@
     "gulp-cli": "^2.3.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5"
