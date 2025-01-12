@@ -50,16 +50,16 @@ Here's what you need to get started:<br>
    :::
 
 4. Now that your project folder is set up, open it in **Visual Studio Code**.
-   <image src='/assets/getting-started/open-in-vscode.png' alt='Open folder in Visual Studio Code' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
+   <image src='/getting-started/open-in-vscode.png' alt='Open folder in Visual Studio Code' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 5. In the **Explorer** on the left hand side, navigate inside of the `peanut_example/`, and then click on `project.ts` to open it.
-   <image src='/assets/getting-started/navigate-project.png' alt='Navigate to project.ts' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
+   <image src='/getting-started/navigate-project.png' alt='Navigate to project.ts' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 6. Now navigate to the tabs in the top left, and click **Terminal** » **New Terminal**.
-   <image src='/assets/getting-started/new-terminal.png' alt='Create new terminal' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
+   <image src='/getting-started/new-terminal.png' alt='Create new terminal' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 7. In the new window at the bottom of your screen, type `npm install` or `npm i`.
-   <image src='/assets/getting-started/npm-install.png' alt='Run npm install' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
+   <image src='/getting-started/npm-install.png' alt='Run npm install' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 8. You should see some text fly by in your terminal; this is all of the project's **required dependencies** being installed.
 
@@ -204,7 +204,7 @@ To see if it worked, try giving yourself the example block you created!
 /give @s peanut:block
 ```
 
-<image src='/assets/getting-started/my-new-block.png' alt='My New Block!' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
+<image src='/getting-started/my-new-block.png' alt='My New Block!' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 <div class="callout">
   <div class="title">Congratulations! 🕺</div>
