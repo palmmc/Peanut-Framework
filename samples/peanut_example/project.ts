@@ -1,4 +1,4 @@
-import { Block, Project } from "@peanut/framework";
+import { Block, Project } from "peanut-framework";
 
 const project = new Project("peanut_example");
 
@@ -8,6 +8,7 @@ project.manifest.properties({
     description: "Sample Project with Peanut Framework",
   },
   // Uncomment the section below to enable scripts.
+  /*
   dependencies: {
     server: {},
     //"server-ui": {},
@@ -17,6 +18,7 @@ project.manifest.properties({
       entry: "main.js",
     },
   },
+  */
 });
 
 project.features = [
