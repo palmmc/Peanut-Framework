@@ -26,3 +26,7 @@ The latest sample packs are available in the [Releases](releases/) tab.
 # Issues
 
 If you experience any issues or have a suggestion, please create an [Issue](../../issues), and I'll try to get to it when I can!
+
+# Credits
+Thank you to [Microsoft Docs](https://learn.microsoft.com/en-us/minecraft/creator/?view=minecraft-bedrock-stable) for the official documentation.
+Thank you to [destruc7i0n](https://thedestruc7i0n.ca/) and the members of the [Bedrock OSS](https://github.com/Bedrock-OSS/bedrock-wiki/) team for their knowledge that filled in many gaps in the official documentation.
