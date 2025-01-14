@@ -112,7 +112,7 @@ export class Item {
    * @param component String array of custom component IDs.
    */
   public customComponent(component: string[]) {
-    this.components["minecraft:custom_component"] = component;
+    this.components["minecraft:custom_components"] = component;
     return this;
   }
 
