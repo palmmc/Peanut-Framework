@@ -65,7 +65,7 @@ export class Project {
     (this.itemMap as any).projectId = this.id;
     await this.itemMap.compile(this.redir);
     const resrc = `./${this.id}/resources`;
-    const redest = this.redir + "/textures";
+    const redest = this.redir;
     if (fs.existsSync(resrc)) await this.copyFolderSync(resrc, redest);
     const endTime = Benchmark.set();
     const elapsed = Benchmark.elapsed(startTime, endTime);
