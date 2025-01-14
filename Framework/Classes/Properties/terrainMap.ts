@@ -31,10 +31,9 @@ export class TerrainMap {
     };
   }) {
     for (const e of Object.entries(entries)) {
-      if (typeof e[1].textures === "string") {
-        if (!e[1].textures.startsWith("textures/"))
-          e[1].textures = "textures/" + e[1].textures;
-      } else {
+      if (typeof e[1].textures === "string")
+        e[1].textures = "textures/" + e[1].textures;
+      else {
         for (let v of e[1].textures.variations) {
           const path =
             e[1].textures.variations[e[1].textures.variations.indexOf(v)].path;

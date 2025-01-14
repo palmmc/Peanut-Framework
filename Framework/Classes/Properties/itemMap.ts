@@ -19,8 +19,7 @@ export class ItemMap {
     };
   }) {
     for (const e of Object.entries(entries)) {
-      if (!e[1].textures.startsWith("textures/"))
-        e[1].textures = "textures/" + e[1].textures;
+      e[1].textures = "textures/" + e[1].textures;
       this.data.texture_data[e[0]] = e[1];
     }
   }

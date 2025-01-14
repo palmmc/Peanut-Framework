@@ -144,10 +144,11 @@ export class Manifest {
           dependency[1].beta || !(version as any)["latest"]
             ? version.beta
             : (version as any)["latest"];
-        this.data.dependencies.push({
-          module_name: "@minecraft/" + dependency[0],
-          version: dependency[1].overrideVersion ?? v,
-        });
+        dependency[1].overrideVersion ??
+          this.data.dependencies.push({
+            module_name: "@minecraft/" + dependency[0],
+            version: dependency[1].overrideVersion ?? v,
+          });
       }
     }
     this.data.metadata.authors = options?.metadata?.authors;

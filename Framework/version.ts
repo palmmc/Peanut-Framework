@@ -19,7 +19,7 @@
                                                                                 created by palm1
  */
 
-const API_VERSION = "0.0.2";
+const API_VERSION = "0.0.1-ALPHA";
 const MIN_ENGINE_VERSION = [1, 21, 50];
 const FORMAT_VERSION = {
   BLOCK: "1.21.50",

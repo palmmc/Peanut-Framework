@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "yauzl": "^3.2.0"
+    "fs": "^0.0.1-security"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
