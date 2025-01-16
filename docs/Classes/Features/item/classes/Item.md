@@ -2,6 +2,24 @@
 
 # Class: Item
 
+Item class used for creating custom items.
+
+## Param
+
+The string that is used in-game to identify the item.
+
+## Param
+
+Optional (but recommended), the string to show up as the display name of the item in-game.
+
+## Param
+
+Optional, the language the display name originates from. Defaults to `en_US`.
+### Example
+```ts
+new Item("peanut:example", "Example Item")
+```
+
 ## Constructors
 
 ### new Item()
@@ -76,6 +94,11 @@ The block that will be placed.
 [`BlockDescriptor`](../../../../Types/Minecraft/Descriptors/block/type-aliases/BlockDescriptor.md)[]
 
 List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.
+### Example
+```ts
+ new Item("peanut:rose_flower_basket", "Basket of Roses")
+ .blockPlacer("minecraft:poppy", ["minecraft:grass_block", "minecraft:dirt"])
+ ```
 
 #### Returns
 

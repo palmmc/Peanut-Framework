@@ -2,15 +2,9 @@
 
 # Class: ItemMap
 
-Item map class used for generating text translations.
+Item map class for generating item texture mappings.
 
-## Param
-
-The string that is used in-game to identify the block.
-### Example
-```ts
-new Block("peanut:example", "Example Block")
-```
+Generates as `item_texture.json`
 
 ## Constructors
 

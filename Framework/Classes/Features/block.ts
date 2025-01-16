@@ -397,7 +397,7 @@ export class Block {
    *
    * Creates a simple single texture for a block.
    * @param name Name used to register the texture.
-   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
+   * @param path Relative to the `/resources/textures/` folder within this project. (Ex. `./resources/textures/blocks/peanut` -> "blocks/peanut")
    */
   public singleTexture(name: string, path: string) {
     this.properties.blockMap = {
@@ -418,8 +418,7 @@ export class Block {
    * Creates a simple multi texture for a block.
    * @param sides Name and path definitions for each texture or side that you want to specify.
    * @param name Name used to register the texture.
-   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
-   * @returns
+   * @param path Relative to the `/resources/textures/` folder within this project. (Ex. `./resources/textures/blocks/peanut` -> "blocks/peanut")
    */
   public multiTexture(
     sides:
@@ -446,7 +445,6 @@ export class Block {
    * Makes your block rotatable.
    * @param type Mode of rotation to use.
    * @param sides Side textures for your block.
-   * @returns
    */
   public rotatableTexture(
     type: "cardinal" | "facing" | "log",
@@ -710,7 +708,7 @@ export class Block {
    *
    * Creates a simple single texture for a block.
    * @param name Name used to register the texture.
-   * @param path Relative to the `/resources/` folder within this project. (Ex. `./resources/peanut` -> "peanut")
+   * @param path Relative to the `/resources/textures/` folder within this project. (Ex. `./resources/textures/blocks/peanut` -> "blocks/peanut")
    */
   public variatedTexture(
     name: string,

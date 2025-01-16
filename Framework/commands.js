@@ -40,7 +40,7 @@ switch (command) {
     break;
   default:
     console.log(
-      "\x1b[94mValid Commands:\x1b[0m\n  - \x1b[33mpeanut \x1b[0mbuild \x1b[94m<path to project directory>\x1b[0m\n  - \x1b[33mpeanut \x1b[0mdeploy\x1b[0m\n  - \x1b[33mpeanut \x1b[0mreload \x1b[94m<path to project directory>\x1b[0mt\n  - \x1b[33mpeanut \x1b[0mwatch \x1b[94m<path to project directory>\x1b[0m"
+      "\x1b[94mValid Commands:\x1b[0m\n  - \x1b[33mpeanut \x1b[0mbuild \x1b[94m<path to project directory>\x1b[0m\n  - \x1b[33mpeanut \x1b[0mdeploy\x1b[0m\n  - \x1b[33mpeanut \x1b[0mreload \x1b[94m<path to project directory>\x1b[0m\n  - \x1b[33mpeanut \x1b[0mwatch \x1b[94m<path to project directory>\x1b[0m"
     );
 }
 

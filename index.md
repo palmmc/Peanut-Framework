@@ -22,8 +22,8 @@ features:
     title: <font size="4">Feature Support</font>
     details: <font size="3">Planned to fully support all vanilla features and structures.</font>
   - icon: 🟦
-    title: <font size="4">Streamline your Features</font>
-    details: <font size="3">Construct custom presets to simplify repetitive structures.</font>
+    title: <font size="4">Streamline with Plugins</font>
+    details: <font size="3">Create or load plugins containing template classes for specific features!</font>
   - icon: 🟪
     title: <font size="4">Work in Progress</font>
     details: <font size="3">Help us improve by either sharing feedback or contributing!</font>

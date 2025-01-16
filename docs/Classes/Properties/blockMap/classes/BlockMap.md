@@ -2,15 +2,9 @@
 
 # Class: BlockMap
 
-Terrain map class used for generating text translations.
+Block map class for generating block texture and sound mappings.
 
-## Param
-
-The string that is used in-game to identify the block.
-### Example
-```ts
-new Block("peanut:example", "Example Block")
-```
+Generates as `blocks.json`
 
 ## Constructors
 

@@ -6,4 +6,4 @@
 
 | Class | Description |
 | ------ | ------ |
-| [ItemMap](classes/ItemMap.md) | Item map class used for generating text translations. |
+| [ItemMap](classes/ItemMap.md) | Item map class for generating item texture mappings. |

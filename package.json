@@ -21,8 +21,8 @@
     "out": "./docs",
     "entryPointStrategy": "expand",
     "entryPoints": [
-      "./PeanutFramework/Classes",
-      "./PeanutFramework/Types"
+      "./Framework/Classes",
+      "./Framework/Types"
     ],
     "navigation": {
       "includeCategories": false,

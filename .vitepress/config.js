@@ -49,13 +49,16 @@ export default {
     },
     siteTitle: "Peanut Framework",
     nav: [
-      { text: "Docs", link: "pages/docs" },
-      { text: "Guides", link: "pages/guides" },
-      { text: "Contact", link: "pages/contact" },
-      { text: "Presets", link: "pages/presets" },
+      { text: "Docs", link: "/docs/docs" },
+      { text: "Guides", link: "/pages/guides/guides" },
+      { text: "Plugins", link: "/pages/plugins" },
+      { text: "Contact", link: "/pages/contact" },
       {
         text: "Changelog",
-        items: [{ text: "v0.0.1", link: "pages/changelog/0.0.1" }],
+        items: [
+          { text: "v0.0.1", link: "pages/changelog/0.0.1" },
+          { text: "v0.0.2", link: "pages/changelog/0.0.2" },
+        ],
       },
     ],
     socialLinks: [
@@ -68,10 +71,10 @@ export default {
     ],
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2025 Peanut Framework",
+      copyright: "Copyright © 2025 Palm (palmmc)",
     },
-    sidebar: [
-      {
+    sidebar: {
+      "/docs/": {
         text: "Documentation",
         items: [
           {
@@ -87,7 +90,7 @@ export default {
                 items: [
                   {
                     text: "Block",
-                    link: "/docs/Classes/Features/Block/block/classes/Block",
+                    link: "/docs/Classes/Features/Block/classes/Block",
                     items: [
                       {
                         text: "Permutation",
@@ -143,6 +146,49 @@ export default {
           },
         ],
       },
-    ],
+      "/pages/guides/getting-started": {
+        text: "Guides",
+        items: [
+          {
+            text: "Guides",
+            link: "/pages/guides/guides",
+            items: [
+              {
+                text: "Getting Started",
+                items: [
+                  {
+                    text: "Setup",
+                    link: "#setup",
+                  },
+                  {
+                    text: "Creating your Project",
+                    link: "#creating-your-project",
+                  },
+                  {
+                    text: "Compiling your Addon",
+                    link: "#compiling-your-addon",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      "/pages/guides/": {
+        text: "Guides",
+        items: [
+          {
+            text: "Guides",
+            link: "/pages/guides/guides",
+            items: [
+              {
+                text: "Getting Started",
+                link: "/pages/guides/getting-started",
+              },
+            ],
+          },
+        ],
+      },
+    },
   },
 };

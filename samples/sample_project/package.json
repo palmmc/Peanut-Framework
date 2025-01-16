@@ -17,7 +17,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "js-yaml": "^4.1.0",
-    "peanut-framework": "^0.0.1",
+    "peanut-framework": "^0.0.21",
     "yauzl": "^3.2.0"
   },
   "devDependencies": {

@@ -6,7 +6,7 @@
 | ------ | ------ |
 | [Classes/classes](Classes/classes/index.md) | - |
 | [Classes/Expressions/molang](Classes/Expressions/molang/index.md) | - |
-| [Classes/Features/Block/block](Classes/Features/Block/block/index.md) | - |
+| [Classes/Features/block](Classes/Features/block/index.md) | - |
 | [Classes/Features/Block/permutation](Classes/Features/Block/permutation/index.md) | - |
 | [Classes/Features/item](Classes/Features/item/index.md) | - |
 | [Classes/project](Classes/project/index.md) | - |

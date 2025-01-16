@@ -1,8 +1,6 @@
-# Getting Started
+<h1 style="display:inline-block; margin-right:8px;">Getting Started</h1><span class="label guide" style="transform: translateY(-6px);">GUIDE</span> <span class="label easy" style="transform: translateY(-6px);">EASY</span>
 
 ---
-
-<span class="label guide">GUIDE</span> <span class="label easy">EASY</span>
 
 So, you want to create an addon with Peanut? Well, let's dive right in!
 <br><br>
@@ -31,14 +29,15 @@ Here's what you need to get started:<br>
    ---
    ├── PROJECT_DIRECTORY/
    │   ├── NAMESPACE/
-   │   │   ├── resources/
+   │   │   ├── plugins/ -# Used for PeanutFramework plugins.
+   │   │   │   └── ...
+   │   │   ├── resources/ -# Used for resource pack resources (textures, sounds, etc.)
+   │   │   │   └── ...
+   │   │   ├── scripts/ -# Optional, used for Script API scripts.
    │   │   │   └── ...
    │   │   └── project.ts
-   │   └── scripts/ -## Optional, for ScriptAPI scripts.
-   │       └── ...
-   ├── deploy.bat
-   ├── deploy.js
-   ├── gulpfile.js -## Optional, for ScriptAPI compilation.
+   ├── gulpfile.js
+   ├── plugins.js
    └── package.json
    ---
    ```
@@ -62,6 +61,8 @@ Here's what you need to get started:<br>
    <image src='/getting-started/npm-install.png' alt='Run npm install' style='border:10px solid #202127; border-radius: 10px; pointer-events: none;'></image>
 
 8. You should see some text fly by in your terminal; this is all of the project's **required dependencies** being installed.
+
+9. Lastly, run the command `npm i -g peanut-framework`. This will allow you to run Peanut Framework's commands.
 
 <div class="callout">
   <div class="title">Congratulations! 🥳</div>
@@ -124,7 +125,7 @@ project.features = [
 
 The `project.features` array registers all of the contained features to the project you are working on. You do **not** have to initialize your features directly inside of the array like in this example.
 
-Using the `Block` class, we've created a new block with the identifier `peanut:block`, and the name `Peanut Block`. It also maps the texture `peanut` from the `/resources/blocks/peanut` folder to every side of the block!
+Using the `Block` class, we've created a new block with the identifier `peanut:block`, and the name `Peanut Block`. It also maps the texture `peanut` from the `/resources/textures/blocks/peanut` folder to every side of the block!
 
 Your finished code should look like this:
 
@@ -167,16 +168,20 @@ project.compile();
 
 Although you now have a working project, it's not an addon yet, which means it's not usable in Minecraft. Let's change that!
 
-In your **Terminal** from earlier, run the command `peanut build peanut_example/project.ts`
+In your **Terminal** from earlier, run the command `peanut build peanut_example`
 
 ::: info
-_Peanut registers three terminal commands that you can use for compilation:_
+_Peanut registers four terminal commands for different purposes:_
 
-> `peanut build <path to script>` - Generates behavior and resource packs from a script.
->
-> `peanut watch <path to script>` - Generates behavior and resource packs every time you save the specified file.
+> `peanut build <path to project directory>` - Generates project behavior and resources.
 >
 > `peanut deploy` - Deploys your latest behavior and resource pack build to Minecraft.
+>
+> `peanut reload <path to project directory>` - Reloads plugins from your plugins directory.
+>
+> `peanut watch <path to project directory>` - Starts a watch task for your project.
+>
+> > This means that anytime a script in your project is saved, your project will be built, compiled, and deployed to Minecraft.
 
 :::
 
@@ -229,65 +234,4 @@ If you experience any issues or have a suggestion, please create an [Issue](http
   If you're ready to start creating, head over to the <a target=_blank href=/docs.html>docs</a> to see what you can do!</div>
 </div>
 
-<style>
-.callout {
-  --callout-title-color: #f5a402;
-  --callout-border-color: #eb9834;
-  border: 1px solid #202127;
-  border-left: 10px solid var(--callout-border-color);
-  background-color: #202127;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 5px;
-}
-
-.callout .title {
-  font-weight: bold;
-  color: var(--callout-title-color);
-  margin-bottom: 10px;
-  font-size: 1.2em;
-}
-
-.callout .content {
-  color:rgb(255 255 245 / 86%);
-  line-height: 1.5;
-}
-
-.callout.info {
-  --callout-title-color: #70a7ff;
-  --callout-border-color: #2760b6;
-}
-
-.label {
-  font-size: 16px;
-  padding: 6px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: white;
-  border-radius: 5px;
-  display: inline-block;
-  margin: 2px;
-}
-
-.guide {
-  background-color: #00965e;
-}
-
-.easy {
-  background-color: #2760b6;
-}
-
-.intermediate {
-  background-color: #ff8426;
-}
-
-.advanced {
-  background-color: #ff3526;
-}
-
-a, a:hover, a:focus, a:active {
-  text-decoration: none !important;
-}
-</style>
+<Guide />

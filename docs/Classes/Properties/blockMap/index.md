@@ -6,4 +6,4 @@
 
 | Class | Description |
 | ------ | ------ |
-| [BlockMap](classes/BlockMap.md) | Terrain map class used for generating text translations. |
+| [BlockMap](classes/BlockMap.md) | Block map class for generating block texture and sound mappings. |

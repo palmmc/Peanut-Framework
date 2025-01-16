@@ -4,12 +4,19 @@
 
 Translation class used for generating text translations.
 
-## Param
+Generates multiple `xx_XX.lang` files based on specified translations.
 
-The string that is used in-game to identify the block.
 ### Example
 ```ts
-new Block("peanut:example", "Example Block")
+project.language.translate({
+ entries: [
+   {
+     key: "accessibility.chat.howtoopen",
+     text: "Press T to tell us you like Cookies!",
+     overrideTranslation: [{ source: "en_GB", text: "Press T to tell us you like Biscuits!" }],
+   },
+ ],
+});
 ```
 
 ## Constructors

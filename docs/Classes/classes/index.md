@@ -6,7 +6,7 @@
 
 ### Block
 
-Re-exports [Block](../Features/Block/block/classes/Block.md)
+Re-exports [Block](../Features/block/classes/Block.md)
 
 ***
 

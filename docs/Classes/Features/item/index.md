@@ -6,4 +6,4 @@
 
 | Class | Description |
 | ------ | ------ |
-| [Item](classes/Item.md) | - |
+| [Item](classes/Item.md) | Item class used for creating custom items. |
