@@ -1,3 +1,13 @@
+/**
+ * Represents the various states or properties that a block can have in Minecraft.
+ * These states affect the appearance, behavior, and functionality of the blocks in-game.
+ * 
+ * Each value represents a different aspect of a block that can be tracked or manipulated.
+ * For example, a block might have a "facing_direction" state that determines which direction
+ * it is facing, or a "waterlogged" state that indicates if the block is submerged in water.
+ * 
+ * These block states can be used when manipulating blocks via scripting or defining custom behaviors.
+ */
 export type VanillaBlockState =
   | "active"
   | "age"

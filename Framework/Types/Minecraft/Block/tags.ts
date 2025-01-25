@@ -1,3 +1,15 @@
+/**
+ * Represents various tags that categorize blocks in Minecraft.
+ * These tags are used to group blocks by their material, function, or properties,
+ * allowing for more efficient block handling, interactions, and behaviors.
+ * Some tags are built-in Minecraft tags, while others are specific to Minecraft scripting.
+ * 
+ * Tags like "minecraft:iron_tier_destructible" or "minecraft:is_pickaxe_item_destructible" 
+ * represent blocks that can be interacted with using specific tool tiers or items.
+ * Tags like "dirt", "grass", "sand", and "stone" categorize blocks by their material type.
+ * Tags such as "mob_spawner" or "plant" describe blocks with special properties or functions.
+ *
+ **/
 export type VanillaBlockTag =
   | "acacia"
   | "birch"

@@ -19,7 +19,7 @@ import { Molang } from "../classes";
  * @param identifier The string that is used in-game to identify the item.
  * @param displayName Optional (but recommended), the string to show up as the display name of the item in-game.
  * @param language Optional, the language the display name originates from. Defaults to `en_US`.
- * ### Example
+ * @example
  * ```ts
  * new Item("peanut:example", "Example Item")
  * ```
@@ -60,7 +60,7 @@ export class Item {
    * Block Placer item component. Items with this component will place a block when used.
    * @param block The block that will be placed.
    * @param useOn List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.
-   * ### Example
+   * @example
    * ```ts
     new Item("peanut:rose_flower_basket", "Basket of Roses")
     .blockPlacer("minecraft:poppy", ["minecraft:grass_block", "minecraft:dirt"])

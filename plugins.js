@@ -1,15 +1,24 @@
-const fs = require("fs");
-const path = require("path");
-const peanutJson = require("peanut-framework/package.json");
-const API_VERSION = peanutJson.api_version;
-const FRAMEWORK_VERSION = peanutJson.version;
-const yauzl = require("yauzl");
-
+/**
+ * Console utility class for logging and managing logs in order.
+ */
 class Console {
+  /**
+   * Array that stores queued log objects.
+   * @type {Array<{text: string, order: number}>}
+   */
   static logs = [];
+
+  /**
+   * Logs a message to the console with Minecraft color codes replaced by terminal color codes.
+   * @param {string} text - The message to log.
+   */
   static log(text) {
     console.log(replaceMinecraftColorCodes(text));
   }
+
+  /**
+   * Writes all logs from the queue to the console, sorted by their order.
+   */
   static writeQueue() {
     console.log();
     this.logs.sort((a, b) => a.order - b.order);
@@ -21,7 +30,16 @@ class Console {
     }
     console.log();
   }
+
+  /**
+   * Queue object for adding log messages with a specific order.
+   */
   static queue = {
+    /**
+     * Adds a log entry to the queue.
+     * @param {string} data - The log message to be added.
+     * @param {number} order - The order in which the log should be displayed.
+     */
     log: (data, order) => {
       this.logs.push({
         text: replaceMinecraftColorCodes(data),
@@ -31,6 +49,11 @@ class Console {
   };
 }
 
+/**
+ * Replaces Minecraft color codes with terminal color codes for proper display.
+ * @param {string} text - The text containing Minecraft color codes.
+ * @returns {string} The text with Minecraft color codes replaced by terminal codes.
+ */
 function replaceMinecraftColorCodes(text) {
   const colorMap = {
     "§0": "30", // Black
@@ -66,6 +89,10 @@ function replaceMinecraftColorCodes(text) {
   return result;
 }
 
+/**
+ * Loads plugins from the specified project directory, extracts archives, and validates plugin data.
+ * @param {string} projectDir - The path to the project directory containing plugins.
+ */
 async function loadPlugins(projectDir) {
   try {
     // Check if project directory is valid
@@ -167,6 +194,12 @@ async function loadPlugins(projectDir) {
   Console.writeQueue();
 }
 
+/**
+ * Extracts a plugin archive (zip or pfplugin file) to the plugins directory.
+ * @param {string} filePath - The path to the plugin archive.
+ * @param {string} pluginsDir - The path to the plugins directory where the archive will be extracted.
+ * @returns {Promise<void>} A promise that resolves once extraction is complete.
+ */
 async function extractPluginArchive(filePath, pluginsDir) {
   return new Promise((resolve, reject) => {
     yauzl.open(filePath, { lazyEntries: true }, (err, zipfile) => {
@@ -227,6 +260,12 @@ async function extractPluginArchive(filePath, pluginsDir) {
   });
 }
 
+/**
+ * Copies scripts from the source directory to the destination directory.
+ * @param {string} source - The path to the source directory containing scripts.
+ * @param {string} destination - The path to the destination directory where scripts will be copied.
+ * @returns {Promise<void>} A promise that resolves when the copying is complete.
+ */
 async function copyScripts(source, destination) {
   try {
     await fs.promises.mkdir(destination, { recursive: true });
@@ -249,14 +288,15 @@ async function copyScripts(source, destination) {
   }
 }
 
+/**
+ * Main execution function for loading plugins from a project directory.
+ * @param {string} projectDir - The path to the project directory.
+ */
 const projectDir = process.argv[2];
 
 if (!projectDir) {
   console.error(
-    "\x1b[91mError: \x1b[0mProject path must be passed as an argument.\x1b[0m"
-  );
-  console.error(
-    "\x1b[94mUsage: \x1b[33mpeanut \x1b[0mreload \x1b[91m<path to project directory>\x1b[0m"
+    "\x1b[91mError: No project directory provided. Please specify the directory.\x1b[0m"
   );
   process.exit(1);
 }

@@ -1,3 +1,8 @@
+/**
+ * Represents the categories that can be assigned to menu items in a Minecraft menu system.
+ * These categories group items based on their general use or type, such as construction materials,
+ * equipment, nature-related items, etc.
+ */
 type VanillaMenuCategories =
   | "construction"
   | "equipment"
@@ -5,6 +10,11 @@ type VanillaMenuCategories =
   | "nature"
   | "none";
 
+/**
+ * Represents the specific item groups that can be associated with menu items in a Minecraft menu system.
+ * These groups represent item sets based on their type, such as specific tools, blocks, or food items.
+ * Each item group corresponds to a unique category of items, like axes, banners, or boats.
+ **/
 type VanillaMenuGroups =
   | "itemGroup.name.anvil"
   | "itemGroup.name.arrow"
