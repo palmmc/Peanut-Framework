@@ -3,6 +3,12 @@ import { v4 as uuid } from "uuid";
 import { API_VERSION, MIN_ENGINE_VERSION, MODULE_VERSION } from "../../version";
 import { Benchmark, Console } from "../../Utilities/utils";
 
+/**
+ * Merges two manifest objects, preserving UUIDs from the first manifest.
+ * @param mn1 The first manifest object to merge.
+ * @param mn2 The second manifest object to merge, whose properties will be overridden by mn1 where applicable.
+ * @returns The merged manifest object.
+ */
 function mergePreserveUuids(mn1: any, mn2: any) {
   for (const key in mn2) {
     if (mn2.hasOwnProperty(key)) {
@@ -23,14 +29,15 @@ type Dependency = {
 };
 
 /**
- * Manifest class used to create a pack manifest.
+ * Manifest class used to create and manage the manifest of a Minecraft resource or behavior pack.
+ * This class provides methods to define metadata, dependencies, modules, and to compile the manifest into JSON.
  * @param options Options for constructing a manifest.
- * ### Example
+ * @example
  * ```ts
  * project.manifest = new Manifest({
  *    header: { name: "Peanut Example", description: "Example pack" },
  * });
- ```
+ * ```
  */
 export class Manifest {
   private data: any = {
@@ -49,6 +56,15 @@ export class Manifest {
       },
     },
   };
+
+  /**
+   * Constructs the Manifest object and initializes the properties with the provided options.
+   * @param options Configuration options for the manifest.
+   * - header: Defines the pack's name, description, version, and other metadata.
+   * - modules: Defines the script entry point and other modules for the pack.
+   * - dependencies: Defines the dependencies of the pack (such as server modules).
+   * - metadata: Additional metadata like authors, license, and URL.
+   */
   constructor(options?: {
     header?: {
       description?: string;
@@ -80,6 +96,12 @@ export class Manifest {
   }) {
     this.properties(options);
   }
+
+  /**
+   * Sets the properties for the manifest object using the provided options.
+   * This method updates the header, modules, dependencies, and metadata of the manifest.
+   * @param options Configuration options to set the properties.
+   */
   public properties(options?: {
     header?: {
       description?: string;
@@ -153,6 +175,7 @@ export class Manifest {
     this.data.metadata.authors = options?.metadata?.authors;
     this.data.metadata.license = options?.metadata?.license;
     this.data.metadata.url = options?.metadata?.url;
+
     // Resource Manifest
     this.resources.header = {
       description:
@@ -175,8 +198,13 @@ export class Manifest {
     this.resources.metadata.license = options?.metadata?.license;
     this.resources.metadata.url = options?.metadata?.url;
   }
+
   /**
-   * Compiles a finished manifest class to JSON. Use after all other methods on this instance to generate it.
+   * Compiles the manifest into JSON format and writes it to the specified file paths.
+   * The method generates two separate manifest files, one for resources and one for behaviors.
+   * @param rePath Path where the resource manifest should be saved.
+   * @param bePath Path where the behavior manifest should be saved.
+   * @param oldManifest Optionally provide old manifest data to merge with the new manifest.
    */
   public compile(rePath: string, bePath: string, oldManifest?: any) {
     const startTime = Benchmark.set();

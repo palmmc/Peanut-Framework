@@ -21,7 +21,7 @@ import { Molang, Permutation } from "../classes";
  * @param identifier The string that is used in-game to identify the block.
  * @param displayName Optional (but recommended), the string to show up as the display name of the block in-game.
  * @param language Optional, the language the display name originates from. Defaults to `en_US`.
- * ### Example
+ * @example
  * ```ts
  * new Block("peanut:example", "Example Block")
  * ```

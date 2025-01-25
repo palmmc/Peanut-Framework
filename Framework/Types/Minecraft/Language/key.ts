@@ -1,3 +1,12 @@
+/**
+ * Represents the supported language keys for the system.
+ * 
+ * These language keys correspond to specific regional language codes that define the language
+ * and its regional variant for localization purposes.
+ * 
+ * Each key follows the format of a two-letter language code, followed by a two-letter country code, 
+ * separated by an underscore (e.g., `"en_US"` for English (United States)).
+*/
 export type LanguageKey =
   | "id_ID"
   | "da_DK"

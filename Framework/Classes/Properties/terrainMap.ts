@@ -2,22 +2,39 @@ import * as fs from "fs";
 import { Benchmark, Console } from "../../Utilities/utils";
 
 /**
- * Terrain map class used for generating text translations.
- * @param identifier The string that is used in-game to identify the block.
- * ### Example
- * ```ts
- * new Block("peanut:example", "Example Block")
- * ```
+ * Terrain map class used for generating texture translations for terrain.
+ * This class allows the addition of texture entries and the compilation of a `terrain_texture.json` file.
+ * @class
  */
 export class TerrainMap {
+  /** The project ID associated with the terrain map. */
   private projectId = "unknown";
+
+  /** The data object containing texture-related information for terrain. */
   private data: any = {
     texture_name: "atlas.terrain",
     padding: 8,
     num_mip_levels: 4,
     texture_data: {},
   };
+
+  /**
+   * Constructs an instance of the TerrainMap class.
+   */
   constructor() {}
+
+  /**
+   * Adds texture entries to the terrain map. If the texture path does not start with "textures/", it will be prefixed with "textures/".
+   * @param entries An object containing texture entries where the key is a block identifier and the value contains texture information.
+   * @example
+   * ```ts
+   * terrainMap.entry({
+   *   "peanut:example": {
+   *     textures: "example_texture"
+   *   }
+   * });
+   * ```
+   */
   public entry(entries: {
     [key: string]: {
       textures:
@@ -45,7 +62,14 @@ export class TerrainMap {
       this.data.texture_data[e[0]] = e[1];
     }
   }
-  public compile(rePath: string) {
+
+  /**
+   * Compiles the terrain map into a `terrain_texture.json` file in the specified resource path.
+   * The resulting JSON file will contain the texture data for terrain entries added to the map.
+   * @param rePath The path where the compiled `terrain_texture.json` file should be saved.
+   * @returns {void}
+   */
+  public compile(rePath: string): void {
     const entries = Object.keys(this.data.texture_data).length;
     if (entries <= 0) return;
     const startTime = Benchmark.set();

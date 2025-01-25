@@ -4,6 +4,16 @@ const { spawn } = require("child_process");
 const args = process.argv.slice(2);
 const command = args[0];
 
+/**
+ * Command-line utility for managing project build, deployment, and watch tasks.
+ * Supports commands for building, watching, deploying, and reloading project scripts.
+ * 
+ * @example
+ * peanut build <path to project directory> - Builds the project at the specified path.
+ * peanut watch <path to project directory> - Watches the project directory for changes.
+ * peanut deploy - Deploys the project packs.
+ * peanut reload <path to project directory> - Reloads the project scripts at the specified path.
+ */
 switch (command) {
   case "build":
     if (!args[1]) {
@@ -44,6 +54,12 @@ switch (command) {
     );
 }
 
+/**
+ * Executes a shell command with the provided arguments and logs the output to the console.
+ *
+ * @param {string} command - The command to execute.
+ * @param {string[]} [args=[]] - An array of arguments to pass to the command.
+ */
 function runCommand(command, args = []) {
   spawn(command, args, { stdio: "inherit", shell: true });
 }

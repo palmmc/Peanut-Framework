@@ -1,3 +1,15 @@
+/**
+ * Replaces Minecraft color codes (prefixed with "§") in the given text with their corresponding ANSI escape codes.
+ * This function is used to convert Minecraft-style text formatting into terminal-compatible formatting.
+ * 
+ * @param {string} text - The input text containing Minecraft color codes.
+ * @returns {string} A string where Minecraft color codes have been replaced with ANSI escape sequences.
+ * 
+ * @example
+ * const text = "§1This is dark blue§r and this is normal.";
+ * const result = replaceMinecraftColorCodes(text);
+ * console.log(result); // Output will be in dark blue, then reset to normal
+ */
 export function replaceMinecraftColorCodes(text: string): string {
   const colorMap: { [key: string]: string } = {
     "§0": "30", // Black

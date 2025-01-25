@@ -1,3 +1,20 @@
+/**
+ * Represents the various item tags that categorize items in the game.
+ * 
+ * These tags group items by their functionality or type. For example, 
+ * certain tags classify items as tools, foods, or materials for crafting.
+ * 
+ * Some examples of tags include:
+ * - `"minecraft:arrow"`: Items that are arrows.
+ * - `"minecraft:banner"`: Items that are banners.
+ * - `"minecraft:boat"`: Items that are boats.
+ * - `"minecraft:coals"`: Coal-related items.
+ * - `"minecraft:diamond_tier"`: Items related to the diamond tier (e.g., diamond tools).
+ * - `"minecraft:is_food"`: Items that are classified as food.
+ * - `"minecraft:planks"`: Wood planks.
+ * - `"minecraft:stone_tier"`: Items related to the stone tier (e.g., stone tools).
+ * - `"minecraft:wool"`: Wool items.
+*/
 export type VanillaItemTag =
   | "minecraft:arrow"
   | "minecraft:banner"

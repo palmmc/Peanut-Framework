@@ -6,20 +6,22 @@ import { LanguageKey } from "../../Types/types";
 /**
  * Translation class used for generating text translations.
  *
- * Generates multiple `xx_XX.lang` files based on specified translations.
+ * This class helps in creating language files for multiple translations.
+ * It generates `.lang` files for each language, which includes the translations for specific keys.
+ * The translations can be automatically generated for supported languages if required.
  * 
- * ### Example
+ * @example
  * ```ts
  * project.language.translate({
-  entries: [
-    {
-      key: "accessibility.chat.howtoopen",
-      text: "Press T to tell us you like Cookies!",
-      overrideTranslation: [{ source: "en_GB", text: "Press T to tell us you like Biscuits!" }],
-    },
-  ],
-});
-```
+ *    entries: [
+ *      {
+ *        key: "accessibility.chat.howtoopen",
+ *        text: "Press T to tell us you like Cookies!",
+ *        overrideTranslation: [{ source: "en_GB", text: "Press T to tell us you like Biscuits!" }],
+ *      },
+ *    ],
+ * });
+ * ```
  */
 export class Language {
   private projectId: string = "unknown";
@@ -38,12 +40,27 @@ export class Language {
     }[];
   }[] = [];
   private languages: LanguageKey[] = defaultLanguages;
+
+  /**
+   * Configures the language settings, including whitelisting and blacklisting languages.
+   *
+   * @param options Configuration options for language whitelisting or blacklisting.
+   * - `whitelistAsBlacklist`: If `true`, languages not listed in `whitelistLanguages` will be excluded.
+   * - `whitelistLanguages`: List of languages that should be included. 
+   */
   constructor(options?: {
     whitelistAsBlacklist?: boolean;
     whitelistLanguages?: LanguageKey[];
   }) {
     this.configure(options);
   }
+
+  /**
+   * Configures the language settings based on provided options.
+   * Allows specifying languages to be whitelisted or blacklisted.
+   *
+   * @param options Configuration options for language whitelisting or blacklisting.
+   */
   public async configure(options?: {
     whitelistAsBlacklist?: boolean;
     whitelistLanguages?: LanguageKey[];
@@ -66,10 +83,23 @@ export class Language {
       this.languages = languages;
     }
   }
+
+  /**
+   * Enables automatic translation for languages not listed in the source language.
+   * 
+   * @returns The current instance of the Language class.
+   */
   public autoTranslate() {
     this.automaticTranslation = true;
     return this;
   }
+
+  /**
+   * Adds translations to the translation queue.
+   * 
+   * @param translations Array of translation objects.
+   * Each object contains language-specific entries for keys and their respective translations.
+   */
   public translate(
     ...translations: {
       source?: LanguageKey;
@@ -87,6 +117,11 @@ export class Language {
   ) {
     this.rawInput = this.rawInput.concat(translations);
   }
+
+  /**
+   * Compiles all translations and writes them to `.lang` files for each supported language.
+   * If there is an error during compilation, it logs the number of errors and the time taken.
+   */
   public async compile() {
     if (!this.projectId || this.projectId == "unknown") {
       Console.queue.custom(
@@ -172,8 +207,16 @@ export class Language {
       );
     }
   }
+
+  /**
+   * Translates the provided text to the target language.
+   * 
+   * @param text The text to be translated.
+   * @param target The target language for the translation.
+   * @returns The translated text.
+   */
   private async feed(text: string, target: string) {
-    return await translate(text, target).catch((e) => {
+    return await translate(text, target).catch((e: Error) => {
       Console.log("Unsupported language: " + e);
     });
   }
